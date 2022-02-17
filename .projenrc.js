@@ -1,4 +1,5 @@
 const { awscdk } = require('projen');
+const { NpmAccess } = require('projen/lib/javascript');
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Matthew Bonig',
   authorAddress: 'matthew.bonig@gmail.com',
@@ -6,5 +7,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@matthewbonig/state-machine',
   repositoryUrl: 'https://github.com/mbonig/state-machine.git',
+  npmAccess: NpmAccess.PUBLIC,
 });
 project.synth();
