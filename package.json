@@ -1,5 +1,6 @@
 {
   "name": "@matthewbonig/state-machine",
+  "description": "A Step Function state machine construct focused on working well with the Workflow Studio",
   "repository": {
     "type": "git",
     "url": "https://github.com/mbonig/state-machine.git"
@@ -63,6 +64,8 @@
     "constructs": "^10.0.5"
   },
   "keywords": [
+    "AWS Step Functions",
+    "awscdk",
     "cdk"
   ],
   "main": "lib/index.js",
