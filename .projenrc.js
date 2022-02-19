@@ -8,5 +8,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: '@matthewbonig/state-machine',
   repositoryUrl: 'https://github.com/mbonig/state-machine.git',
   npmAccess: NpmAccess.PUBLIC,
+  gitignore: ['.idea/'],
 });
+
 project.synth();
