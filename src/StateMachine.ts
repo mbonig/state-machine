@@ -1,9 +1,8 @@
-import { Stack } from 'aws-cdk-lib';
+import { Arn, ArnFormat, Duration, Resource, Stack, Token } from 'aws-cdk-lib';
 import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as aws_stepfunctions from 'aws-cdk-lib/aws-stepfunctions';
 import { LogOptions, StateMachineType } from 'aws-cdk-lib/aws-stepfunctions';
-import { Arn, ArnFormat, Duration, Resource, Token } from 'aws-cdk-lib/core';
 import { Construct } from 'constructs';
 
 export interface StateMachineProps {
