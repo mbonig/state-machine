@@ -11,6 +11,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   npmAccess: NpmAccess.PUBLIC,
   gitignore: ['.idea/'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],
+  depsUpgrade: false,
 });
 
 project.synth();
