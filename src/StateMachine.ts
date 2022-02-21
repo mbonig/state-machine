@@ -3,7 +3,6 @@ import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as aws_stepfunctions from 'aws-cdk-lib/aws-stepfunctions';
 import { LogOptions, StateMachineType } from 'aws-cdk-lib/aws-stepfunctions';
-import { StatesMetrics } from 'aws-cdk-lib/aws-stepfunctions/lib/stepfunctions-canned-metrics.generated';
 import { Arn, ArnFormat, Duration, Resource, Token } from 'aws-cdk-lib/core';
 import { Construct } from 'constructs';
 
@@ -205,7 +204,14 @@ abstract class StateMachineBase extends Resource implements aws_stepfunctions.IS
    * @default - sum over 5 minutes
    */
   public metricFailed(props?: cloudwatch.MetricOptions): cloudwatch.Metric {
-    return this.cannedMetric(StatesMetrics.executionsFailedSum, props);
+    return this.cannedMetric(function executionsFailedSum(dimensions) {
+      return {
+        namespace: 'AWS/States',
+        metricName: 'ExecutionsFailed',
+        dimensionsMap: dimensions,
+        statistic: 'Sum',
+      };
+    }, props);
   }
 
   /**
@@ -224,7 +230,14 @@ abstract class StateMachineBase extends Resource implements aws_stepfunctions.IS
    * @default - sum over 5 minutes
    */
   public metricAborted(props?: cloudwatch.MetricOptions): cloudwatch.Metric {
-    return this.cannedMetric(StatesMetrics.executionsAbortedSum, props);
+    return this.cannedMetric(function executionsAbortedSum(dimensions) {
+      return {
+        namespace: 'AWS/States',
+        metricName: 'ExecutionsAborted',
+        dimensionsMap: dimensions,
+        statistic: 'Sum',
+      };
+    }, props);
   }
 
   /**
@@ -233,7 +246,14 @@ abstract class StateMachineBase extends Resource implements aws_stepfunctions.IS
    * @default - sum over 5 minutes
    */
   public metricSucceeded(props?: cloudwatch.MetricOptions): cloudwatch.Metric {
-    return this.cannedMetric(StatesMetrics.executionsSucceededSum, props);
+    return this.cannedMetric(function executionsSucceededSum(dimensions) {
+      return {
+        namespace: 'AWS/States',
+        metricName: 'ExecutionsSucceeded',
+        dimensionsMap: dimensions,
+        statistic: 'Sum',
+      };
+    }, props);
   }
 
   /**
@@ -242,7 +262,14 @@ abstract class StateMachineBase extends Resource implements aws_stepfunctions.IS
    * @default - sum over 5 minutes
    */
   public metricTimedOut(props?: cloudwatch.MetricOptions): cloudwatch.Metric {
-    return this.cannedMetric(StatesMetrics.executionsTimedOutSum, props);
+    return this.cannedMetric(function executionsTimedOutSum(dimensions) {
+      return {
+        namespace: 'AWS/States',
+        metricName: 'ExecutionsTimedOut',
+        dimensionsMap: dimensions,
+        statistic: 'Sum',
+      };
+    }, props);
   }
 
   /**
@@ -260,7 +287,14 @@ abstract class StateMachineBase extends Resource implements aws_stepfunctions.IS
    * @default - average over 5 minutes
    */
   public metricTime(props?: cloudwatch.MetricOptions): cloudwatch.Metric {
-    return this.cannedMetric(StatesMetrics.executionTimeAverage, props);
+    return this.cannedMetric(function executionTimeAverage(dimensions) {
+      return {
+        namespace: 'AWS/States',
+        metricName: 'ExecutionTime',
+        dimensionsMap: dimensions,
+        statistic: 'Average',
+      };
+    }, props);
   }
 
   /**
