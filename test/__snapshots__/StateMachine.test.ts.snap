@@ -104,40 +104,24 @@ Object {
     },
   },
   "Resources": Object {
-    "SecretA720EF05": Object {
-      "DeletionPolicy": "Delete",
+    "Test7BFAF513": Object {
+      "DependsOn": Array [
+        "TestRole17AB2208",
+      ],
       "Properties": Object {
-        "GenerateSecretString": Object {},
-      },
-      "Type": "AWS::SecretsManager::Secret",
-      "UpdateReplacePolicy": "Delete",
-    },
-    "Test": Object {
-      "Properties": Object {
-        "DefinitionString": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"Comment\\":\\"A description of my state machine\\",\\"StartAt\\":\\"Read database credentials secret\\",\\"States\\":{\\"Read database credentials secret\\":{\\"Type\\":\\"Task\\",\\"Parameters\\":{\\"SecretId\\":\\"",
-              Object {
-                "Ref": "SecretA720EF05",
-              },
-              "\\"},\\"Resource\\":\\"arn:aws:states:::aws-sdk:secretsmanager:getSecretValue\\",\\"Next\\":\\"Parse SecretString\\",\\"ResultPath\\":\\"$.dbSecret\\"},\\"Parse SecretString\\":{\\"Type\\":\\"Pass\\",\\"Next\\":\\"Generate username and password\\",\\"InputPath\\":\\"$.dbSecret\\",\\"Parameters\\":{\\"Value.$\\":\\"States.StringToJson($.SecretString)\\"},\\"ResultPath\\":\\"$.dbSecret\\"},\\"Generate username and password\\":{\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:aws:states:::lambda:invoke\\",\\"Parameters\\":{\\"Payload.$\\":\\"$\\",\\"FunctionName\\":\\"arn:aws:lambda:us-east-1:536309290949:function:step-functions-with-the-c-GenerateUsernameAndPassw-OZ3vhotMEJPK\\"},\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Next\\":\\"Invoke SQL script against database\\",\\"ResultPath\\":\\"$.usernameAndPassword\\",\\"ResultSelector\\":{\\"Username.$\\":\\"$.Payload.username\\",\\"Password.$\\":\\"$.Payload.password\\"}},\\"Invoke SQL script against database\\":{\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:aws:states:::lambda:invoke\\",\\"Parameters\\":{\\"Payload.$\\":\\"$\\",\\"FunctionName\\":\\"arn:aws:lambda:us-east-1:536309290949:function:step-functions-with-the-cdk-ScriptProvider32E26F41-DBeWWSBNMARo\\"},\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Next\\":\\"Generate OTS\\",\\"ResultPath\\":\\"$.invokeOutput\\"},\\"Generate OTS\\":{\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:aws:states:::lambda:invoke\\",\\"Parameters\\":{\\"Payload.$\\":\\"$\\",\\"FunctionName\\":\\"arn:aws:lambda:us-east-1:536309290949:function:step-functions-with-the-cdk-GenerateOtsBE7C09B0-nTIEu0OxGURq\\"},\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Next\\":\\"Send email\\",\\"ResultPath\\":\\"$.ots\\",\\"ResultSelector\\":{\\"OtsUrl.$\\":\\"$.Payload.otsUrl\\"}},\\"Send email\\":{\\"Type\\":\\"Task\\",\\"End\\":true,\\"Parameters\\":{\\"FromEmailAddress\\":\\"matthew.bonig@gmail.com\\",\\"Content\\":{\\"Simple\\":{\\"Body\\":{\\"Html\\":{\\"Data\\":\\"You're getting new creds!\\"},\\"Text\\":{\\"Data\\":\\"You're getting new creds!\\"}},\\"Subject\\":{\\"Data\\":\\"You're getting new creds!\\"}}},\\"Destination\\":{\\"ToAddresses.$\\":\\"States.Array($.email)\\"}},\\"Resource\\":\\"arn:aws:states:::aws-sdk:sesv2:sendEmail\\"}}}",
-            ],
-          ],
-        },
+        "DefinitionString": "{\\"States\\":{\\"one\\":{\\"Parameters\\":{\\"thingOne\\":\\"test passed\\"}}}}",
         "RoleArn": Object {
           "Fn::GetAtt": Array [
-            "TestRole280D8E72",
+            "TestRole17AB2208",
             "Arn",
           ],
         },
-        "StateMachineName": "A nice state machine",
+        "StateMachineName": "A-nice-state-machine",
         "StateMachineType": "STANDARD",
       },
       "Type": "AWS::StepFunctions::StateMachine",
     },
-    "TestRole280D8E72": Object {
+    "TestRole17AB2208": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -159,20 +143,6 @@ Object {
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/CloudWatchEventsFullAccess",
-              ],
-            ],
-          },
-        ],
       },
       "Type": "AWS::IAM::Role",
     },
