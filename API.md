@@ -4,8 +4,6 @@
 
 ### StateMachine <a name="StateMachine" id="@matthewbonig/state-machine.StateMachine"></a>
 
-- *Implements:* aws-cdk-lib.aws_stepfunctions.IStateMachine
-
 #### Initializers <a name="Initializers" id="@matthewbonig/state-machine.StateMachine.Initializer"></a>
 
 ```typescript
