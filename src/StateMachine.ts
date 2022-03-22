@@ -67,9 +67,9 @@ export class StateMachine extends aws_stepfunctions.StateMachine {
   constructor(scope: Construct, id: string, props: StateMachineProps) {
     super(scope, id, {
       ...props,
-      definition: new Pass(scope, 'Pass'),
+      definition: new Pass(scope, 'THISWILLBEDELETEDRIGHTAWAY'),
     });
-    scope.node.tryRemoveChild('Pass');
+    scope.node.tryRemoveChild('THISWILLBEDELETEDRIGHTAWAY');
     (this.node.defaultChild as CfnStateMachine).definitionString = JSON.stringify(StateMachine.smash(props.definition, props.overrides));
   }
 
