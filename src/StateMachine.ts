@@ -70,7 +70,7 @@ export class StateMachine extends aws_stepfunctions.StateMachine {
       definition: new Pass(scope, 'Pass'),
     });
     scope.node.tryRemoveChild('Pass');
-    (this.node.defaultChild as CfnStateMachine).definition = JSON.stringify(StateMachine.smash(props.definition, props.overrides));
+    (this.node.defaultChild as CfnStateMachine).definitionString = JSON.stringify(StateMachine.smash(props.definition, props.overrides));
   }
 
 
