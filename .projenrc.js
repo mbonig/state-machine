@@ -11,10 +11,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   gitignore: ['.idea/'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],
   vscode: true,
-  npmAccess: NpmAccess.RESTRICTED,
   releaseToNpm: false,
   publishToGo: {
     moduleName: 'github.com/rubenfonseca/state-machine',
+    githubTokenSecret: "GITHUB_TOKEN"
   },
   depsUpgrade: true,
 });
