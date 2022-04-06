@@ -7,7 +7,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkVersion: '2.4.0',
   defaultReleaseBranch: 'main',
   name: '@rubenfonseca/state-machine',
-  repositoryUrl: 'https://github.com/rubenfonseca/state-machine.git',
+  repositoryUrl: 'git@github.com:rubenfonseca/state-machine.git',
   gitignore: ['.idea/'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],
   vscode: true,
