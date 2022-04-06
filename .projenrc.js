@@ -12,6 +12,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   gitignore: ['.idea/'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],
   depsUpgrade: false,
+  publishToPypi: {
+    distName: 'mbonig.state-machine',
+    module: 'mbonig.state_machine',
+  },
 });
 
 project.synth();
