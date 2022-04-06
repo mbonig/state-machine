@@ -14,7 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   releaseToNpm: false,
   publishToGo: {
     moduleName: 'github.com/rubenfonseca/state-machine',
-    githubTokenSecret: "GITHUB_TOKEN"
+    githubTokenSecret: 'GITHUB_TOKEN'
   },
   depsUpgrade: true,
 });
