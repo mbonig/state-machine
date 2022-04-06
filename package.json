@@ -17,6 +17,7 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
+    "package:go": "npx projen package:go",
     "package:js": "npx projen package:js",
     "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
@@ -119,7 +120,8 @@
       "python": {
         "distName": "mbonig.state-machine",
         "module": "mbonig.state_machine"
-      }
+      },
+      "go": {}
     },
     "tsc": {
       "outDir": "lib",
