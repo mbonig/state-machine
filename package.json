@@ -121,7 +121,9 @@
         "distName": "mbonig.state-machine",
         "module": "mbonig.state_machine"
       },
-      "go": {}
+      "go": {
+        "moduleName": "github.com/mbonig/state-machine"
+      }
     },
     "tsc": {
       "outDir": "lib",
