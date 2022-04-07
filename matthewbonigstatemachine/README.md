@@ -30,7 +30,28 @@ new StateMachine(stack, 'Test', {
   },
 });
 ```
+For Python, be sure to use a context manager when opening your JSON file.
+- You do not need to `str()` the dictionary object you supply as your `definition` prop.
+- Elements of your override path **do** need to be strings.
 
+```python
+secret = Secret(stack, 'Secret')
+
+with open('sample.json', 'r+', encoding='utf-8') as sample:
+    sample_dict = json.load(sample)
+
+state_machine = StateMachine(
+    self,
+    'Test',
+    definition = sample_dict,
+    overrides = {
+    "Read database credentials secret": {
+      "Parameters": {
+        "SecretId": secret.secret_arn,
+      },
+    },
+  })
+```
 In this example, the ASL has a state called 'Read database credentials secret' and the SecretId parameter is overridden with a
 CDK generated value.
 Future changes can be done by editing, debugging, and testing the state machine directly in the Workflow Studio.
