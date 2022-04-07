@@ -13,7 +13,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   vscode: true,
   releaseToNpm: false,
   publishToGo: {
-    moduleName: 'github.com/rubenfonseca/state-machine',
+    moduleName: 'github.com/rubenfonseca/state-machine-go',
     githubTokenSecret: 'GO_GITHUB_TOKEN',
   },
   depsUpgrade: true,

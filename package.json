@@ -117,7 +117,7 @@
     "outdir": "dist",
     "targets": {
       "go": {
-        "moduleName": "github.com/rubenfonseca/state-machine"
+        "moduleName": "github.com/rubenfonseca/state-machine-go"
       }
     },
     "tsc": {
