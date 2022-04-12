@@ -1,9 +1,9 @@
 {
-  "name": "state-machine",
+  "name": "@matthewbonig/state-machine",
   "description": "A Step Function state machine construct focused on working well with the Workflow Studio",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rubenfonseca/state-machine.git"
+    "url": "https://github.com/mbonig/state-machine.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -27,6 +27,7 @@
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
+    "upgrade-projen": "npx projen upgrade-projen",
     "watch": "npx projen watch",
     "projen": "npx projen"
   },
@@ -51,7 +52,6 @@
     "jsii": "^1.55.1",
     "jsii-diff": "^1.55.1",
     "jsii-docgen": "^6.3.1",
-    "jsii-pacmak": "^1.55.1",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
     "projen": "^0.54.11",
@@ -63,6 +63,10 @@
     "aws-cdk-lib": "^2.4.0",
     "constructs": "^10.0.5"
   },
+  "dependencies": {
+    "@types/lodash.merge": "^4.6.6",
+    "lodash.merge": "^4.6.2"
+  },
   "keywords": [
     "AWS Step Functions",
     "awscdk",
@@ -70,6 +74,9 @@
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0",
   "jest": {
     "testMatch": [
