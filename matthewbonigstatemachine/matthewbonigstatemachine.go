@@ -275,21 +275,6 @@ func StateMachine_IsResource(construct constructs.IConstruct) *bool {
 	return returns
 }
 
-func StateMachine_Smash(definition interface{}, smash interface{}) interface{} {
-	_init_.Initialize()
-
-	var returns interface{}
-
-	_jsii_.StaticInvoke(
-		"@matthewbonig/state-machine.StateMachine",
-		"smash",
-		[]interface{}{definition, smash},
-		&returns,
-	)
-
-	return returns
-}
-
 func (s *jsiiProxy_StateMachine) AddToRolePolicy(statement awsiam.PolicyStatement) {
 	_jsii_.InvokeVoid(
 		s,
