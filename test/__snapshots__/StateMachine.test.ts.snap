@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot 1`] = `
+exports[`simple snapshot 1`] = `
 Object {
   "Mappings": Object {
     "ServiceprincipalMap": Object {
