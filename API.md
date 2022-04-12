@@ -78,7 +78,13 @@ public applyRemovalPolicy(policy: RemovalPolicy): void
 
 Apply the given removal policy to this resource.
 
-The Removal Policy controls what happens to this resource when it stops being managed by CloudFormation, either because you've removed it from the CDK application or because you've made a change that requires the resource to be replaced.  The resource can be deleted (`RemovalPolicy.DESTROY`), or left in your AWS account for data recovery and cleanup later (`RemovalPolicy.RETAIN`).
+The Removal Policy controls what happens to this resource when it stops
+being managed by CloudFormation, either because you've removed it from the
+CDK application or because you've made a change that requires the resource
+to be replaced.
+
+The resource can be deleted (`RemovalPolicy.DESTROY`), or left in your AWS
+account for data recovery and cleanup later (`RemovalPolicy.RETAIN`).
 
 ###### `policy`<sup>Required</sup> <a name="policy" id="@matthewbonig/state-machine.StateMachine.applyRemovalPolicy.parameter.policy"></a>
 
@@ -321,7 +327,6 @@ Metric for the number of executions that timed out.
 | <code><a href="#@matthewbonig/state-machine.StateMachine.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.isResource">isResource</a></code> | Check whether the given construct is a Resource. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.fromStateMachineArn">fromStateMachineArn</a></code> | Import a state machine. |
-| <code><a href="#@matthewbonig/state-machine.StateMachine.smash">smash</a></code> | *No description.* |
 
 ---
 
@@ -387,26 +392,6 @@ Import a state machine.
 
 ---
 
-##### `smash` <a name="smash" id="@matthewbonig/state-machine.StateMachine.smash"></a>
-
-```typescript
-import { StateMachine } from '@matthewbonig/state-machine'
-
-StateMachine.smash(definition: any, smash?: any)
-```
-
-###### `definition`<sup>Required</sup> <a name="definition" id="@matthewbonig/state-machine.StateMachine.smash.parameter.definition"></a>
-
-- *Type:* any
-
----
-
-###### `smash`<sup>Optional</sup> <a name="smash" id="@matthewbonig/state-machine.StateMachine.smash.parameter.smash"></a>
-
-- *Type:* any
-
----
-
 #### Properties <a name="Properties" id="Properties"></a>
 
 | **Name** | **Type** | **Description** |
@@ -444,7 +429,12 @@ public readonly env: ResourceEnvironment;
 
 The environment this resource belongs to.
 
-For resources that are created and managed by the CDK (generally, those created by creating new class instances like Role, Bucket, etc.), this is always the same as the environment of the stack they belong to; however, for imported resources (those obtained from static methods like fromRoleArn, fromBucketName, etc.), that might be different than the stack they were imported into.
+For resources that are created and managed by the CDK
+(generally, those created by creating new class instances like Role, Bucket, etc.),
+this is always the same as the environment of the stack they belong to;
+however, for imported resources
+(those obtained from static methods like fromRoleArn, fromBucketName, etc.),
+that might be different than the stack they were imported into.
 
 ---
 
@@ -584,6 +574,13 @@ public readonly overrides: any;
 An object that matches the schema/shape of the ASL .States map with overridden values.
 
 ---
+
+*Example*
+
+```typescript
+{'My First State': { Parameters: { FunctionName: 'aLambdaFunctionArn' } } }
+```
+
 
 ##### `role`<sup>Optional</sup> <a name="role" id="@matthewbonig/state-machine.StateMachineProps.property.role"></a>
 
