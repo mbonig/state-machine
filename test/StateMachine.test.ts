@@ -17,24 +17,51 @@ test('simple snapshot', () => {
 
 test('handles arrays', () => {
   const stack = new Stack(new App(), 'TestingStack', {});
+  let firstBranch = {
+    StartAt: 'ResumeCluster',
+    States: {
+      'ResumeCluster': {
+        Type: 'Task',
+        Parameters: {
+          ClusterIdentifier: 'MyData',
+        },
+        Resource: 'arn:aws:states:::aws-sdk:redshift:resumeCluster',
+        Next: 'DescribeClusters',
+      },
+      'DescribeClusters': {
+        Type: 'Task',
+        Parameters: {
+          ClusterIdentifier: '',
+        },
+        Resource: 'arn:aws:states:::aws-sdk:redshift:describeClusters',
+        Next: 'Evaluate Cluster Status',
+      },
+      'Evaluate Cluster Status': {
+        Type: 'Choice',
+        Choices: [
+          {
+            Variable: '$.Clusters[0].ClusterStatus',
+            StringEquals: 'available',
+            Next: 'Redshift Pass',
+          },
+        ],
+        Default: 'Redshift Wait',
+      },
+      'Redshift Pass': {
+        Type: 'Pass',
+        End: true,
+      },
+      'Redshift Wait': {
+        Type: 'Wait',
+        Seconds: 5,
+        Next: 'DescribeClusters',
+      },
+    },
+  };
   new StateMachine(stack, 'Test', {
     stateMachineName: 'A-nice-state-machine',
     overrides: {
-      Branches: [{
-        StartAt: 'ResumeCluster',
-        States: {
-          ResumeCluster: {
-            Parameters: {
-              ClusterIdentifier: 'CLUSTER_NAME',
-            },
-          },
-          DescribeClusters: {
-            Parameters: {
-              ClusterIdentifier: 'CLUSTER_NAME',
-            },
-          },
-        },
-      }, {
+      Branches: [{}, {
         StartAt: 'StartInstances',
         States: {
           StartInstances: {
@@ -54,47 +81,7 @@ test('handles arrays', () => {
     definition: {
       States: {
         Branches: [
-          {
-            StartAt: 'ResumeCluster',
-            States: {
-              'ResumeCluster': {
-                Type: 'Task',
-                Parameters: {
-                  ClusterIdentifier: 'MyData',
-                },
-                Resource: 'arn:aws:states:::aws-sdk:redshift:resumeCluster',
-                Next: 'DescribeClusters',
-              },
-              'DescribeClusters': {
-                Type: 'Task',
-                Parameters: {
-                  ClusterIdentifier: '',
-                },
-                Resource: 'arn:aws:states:::aws-sdk:redshift:describeClusters',
-                Next: 'Evaluate Cluster Status',
-              },
-              'Evaluate Cluster Status': {
-                Type: 'Choice',
-                Choices: [
-                  {
-                    Variable: '$.Clusters[0].ClusterStatus',
-                    StringEquals: 'available',
-                    Next: 'Redshift Pass',
-                  },
-                ],
-                Default: 'Redshift Wait',
-              },
-              'Redshift Pass': {
-                Type: 'Pass',
-                End: true,
-              },
-              'Redshift Wait': {
-                Type: 'Wait',
-                Seconds: 5,
-                Next: 'DescribeClusters',
-              },
-            },
-          },
+          firstBranch,
           {
             StartAt: 'StartInstances',
             States: {
@@ -161,47 +148,7 @@ test('handles arrays', () => {
     DefinitionString: JSON.stringify({
       States: {
         Branches: [
-          {
-            StartAt: 'ResumeCluster',
-            States: {
-              'ResumeCluster': {
-                Type: 'Task',
-                Parameters: {
-                  ClusterIdentifier: 'CLUSTER_NAME',
-                },
-                Resource: 'arn:aws:states:::aws-sdk:redshift:resumeCluster',
-                Next: 'DescribeClusters',
-              },
-              'DescribeClusters': {
-                Type: 'Task',
-                Parameters: {
-                  ClusterIdentifier: 'CLUSTER_NAME',
-                },
-                Resource: 'arn:aws:states:::aws-sdk:redshift:describeClusters',
-                Next: 'Evaluate Cluster Status',
-              },
-              'Evaluate Cluster Status': {
-                Type: 'Choice',
-                Choices: [
-                  {
-                    Variable: '$.Clusters[0].ClusterStatus',
-                    StringEquals: 'available',
-                    Next: 'Redshift Pass',
-                  },
-                ],
-                Default: 'Redshift Wait',
-              },
-              'Redshift Pass': {
-                Type: 'Pass',
-                End: true,
-              },
-              'Redshift Wait': {
-                Type: 'Wait',
-                Seconds: 5,
-                Next: 'DescribeClusters',
-              },
-            },
-          },
+          firstBranch,
           {
             StartAt: 'StartInstances',
             States: {
