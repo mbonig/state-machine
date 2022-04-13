@@ -40,28 +40,11 @@ new StateMachine(stack, 'Test', {
     stateMachineName: 'A-nice-state-machine',
     overrides: {
       Branches: [{
-        StartAt: 'ResumeCluster',
-        States: {
-          ResumeCluster: {
-            Parameters: {
-              ClusterIdentifier: 'CLUSTER_NAME',
-            },
-          },
-          DescribeClusters: {
-            Parameters: {
-              ClusterIdentifier: 'CLUSTER_NAME',
-            },
-          },
-        },
+        // pass an empty object too offset overrides
       }, {
         StartAt: 'StartInstances',
         States: {
           StartInstances: {
-            Parameters: {
-              InstanceIds: ['INSTANCE_ID'],
-            },
-          },
-          DescribeInstanceStatus: {
             Parameters: {
               InstanceIds: ['INSTANCE_ID'],
             },
@@ -76,41 +59,9 @@ new StateMachine(stack, 'Test', {
           {
             StartAt: 'ResumeCluster',
             States: {
-              'ResumeCluster': {
-                Type: 'Task',
-                Parameters: {
-                  ClusterIdentifier: 'MyData',
-                },
-                Resource: 'arn:aws:states:::aws-sdk:redshift:resumeCluster',
-                Next: 'DescribeClusters',
-              },
-              'DescribeClusters': {
-                Type: 'Task',
-                Parameters: {
-                  ClusterIdentifier: '',
-                },
-                Resource: 'arn:aws:states:::aws-sdk:redshift:describeClusters',
-                Next: 'Evaluate Cluster Status',
-              },
-              'Evaluate Cluster Status': {
-                Type: 'Choice',
-                Choices: [
-                  {
-                    Variable: '$.Clusters[0].ClusterStatus',
-                    StringEquals: 'available',
-                    Next: 'Redshift Pass',
-                  },
-                ],
-                Default: 'Redshift Wait',
-              },
               'Redshift Pass': {
                 Type: 'Pass',
                 End: true,
-              },
-              'Redshift Wait': {
-                Type: 'Wait',
-                Seconds: 5,
-                Next: 'DescribeClusters',
               },
             },
           },
@@ -129,7 +80,7 @@ new StateMachine(stack, 'Test', {
               },
               'DescribeInstanceStatus': {
                 Type: 'Task',
-                Next: 'Evaluate Instance Status',
+                Next: 'EC2 Pass',
                 Parameters: {
                   InstanceIds: [
                     'MyData',
@@ -137,37 +88,9 @@ new StateMachine(stack, 'Test', {
                 },
                 Resource: 'arn:aws:states:::aws-sdk:ec2:describeInstanceStatus',
               },
-              'Evaluate Instance Status': {
-                Type: 'Choice',
-                Choices: [
-                  {
-                    And: [
-                      {
-                        Variable: '$.InstanceStatuses[0].InstanceState.Name',
-                        StringEquals: 'running',
-                      },
-                      {
-                        Variable: '$.InstanceStatuses[0].SystemStatus.Details[0].Status',
-                        StringEquals: 'passed',
-                      },
-                      {
-                        Variable: '$.InstanceStatuses[0].InstanceStatus.Details[0].Status',
-                        StringEquals: 'passed',
-                      },
-                    ],
-                    Next: 'EC2 Pass',
-                  },
-                ],
-                Default: 'EC2 Wait',
-              },
               'EC2 Pass': {
                 Type: 'Pass',
                 End: true,
-              },
-              'EC2 Wait': {
-                Type: 'Wait',
-                Seconds: 5,
-                Next: 'DescribeInstanceStatus',
               },
             },
           },
