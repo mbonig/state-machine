@@ -1,5 +1,7 @@
 # Workflow Studio compatible State Machine
 
+[![View on Construct Hub](https://constructs.dev/badge?package=%40matthewbonig%2Fstate-machine)](https://constructs.dev/packages/@matthewbonig/state-machine)
+
 This is a Workflow Studio compatible AWS Step Function state machine construct.
 
 The goal of this construct is to make it easy to build and maintain your state machines using the Workflow Studio but still
