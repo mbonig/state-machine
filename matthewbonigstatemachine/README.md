@@ -1,5 +1,7 @@
 # Workflow Studio compatible State Machine
 
+[![View on Construct Hub](https://constructs.dev/badge?package=%40matthewbonig%2Fstate-machine)](https://constructs.dev/packages/@matthewbonig/state-machine)
+
 This is a Workflow Studio compatible AWS Step Function state machine construct.
 
 The goal of this construct is to make it easy to build and maintain your state machines using the Workflow Studio but still
@@ -18,7 +20,7 @@ The fields in the `overrides` field should match the `States` field of the ASL.
 
 ### Examples
 
-```ts
+```go
 const secret = new Secret(stack, 'Secret', {});
 new StateMachine(stack, 'Test', {
   stateMachineName: 'A nice state machine',
@@ -35,7 +37,7 @@ new StateMachine(stack, 'Test', {
 
 You can also override nested states in arrays, for example:
 
-```ts
+```go
 new StateMachine(stack, 'Test', {
     stateMachineName: 'A-nice-state-machine',
     overrides: {
@@ -100,11 +102,10 @@ new StateMachine(stack, 'Test', {
   });
 ```
 
-
-
 For Python, be sure to use a context manager when opening your JSON file.
-- You do not need to `str()` the dictionary object you supply as your `definition` prop.
-- Elements of your override path **do** need to be strings.
+
+* You do not need to `str()` the dictionary object you supply as your `definition` prop.
+* Elements of your override path **do** need to be strings.
 
 ```python
 secret = Secret(stack, 'Secret')
@@ -124,6 +125,7 @@ state_machine = StateMachine(
     },
   })
 ```
+
 In this example, the ASL has a state called 'Read database credentials secret' and the SecretId parameter is overridden with a
 CDK generated value.
 Future changes can be done by editing, debugging, and testing the state machine directly in the Workflow Studio.

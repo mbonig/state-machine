@@ -537,24 +537,24 @@ func (s *jsiiProxy_StateMachine) ToString() *string {
 
 type StateMachineProps struct {
 	// An object that can be serialized into an ASL.
-	Definition interface{} `json:"definition" yaml:"definition"`
+	Definition interface{} `field:"required" json:"definition" yaml:"definition"`
 	// Defines what execution history events are logged and where they are logged.
-	Logs *awsstepfunctions.LogOptions `json:"logs" yaml:"logs"`
+	Logs *awsstepfunctions.LogOptions `field:"optional" json:"logs" yaml:"logs"`
 	// An object that matches the schema/shape of the ASL .States map with overridden values.
 	//
 	// Example:
 	//   {'My First State': { Parameters: { FunctionName: 'aLambdaFunctionArn' } } }
 	//
-	Overrides interface{} `json:"overrides" yaml:"overrides"`
+	Overrides interface{} `field:"optional" json:"overrides" yaml:"overrides"`
 	// The execution role for the state machine service.
-	Role awsiam.IRole `json:"role" yaml:"role"`
+	Role awsiam.IRole `field:"optional" json:"role" yaml:"role"`
 	// A name for the state machine.
-	StateMachineName *string `json:"stateMachineName" yaml:"stateMachineName"`
+	StateMachineName *string `field:"optional" json:"stateMachineName" yaml:"stateMachineName"`
 	// Type of the state machine.
-	StateMachineType awsstepfunctions.StateMachineType `json:"stateMachineType" yaml:"stateMachineType"`
+	StateMachineType awsstepfunctions.StateMachineType `field:"optional" json:"stateMachineType" yaml:"stateMachineType"`
 	// Maximum run time for this state machine.
-	Timeout awscdk.Duration `json:"timeout" yaml:"timeout"`
+	Timeout awscdk.Duration `field:"optional" json:"timeout" yaml:"timeout"`
 	// Specifies whether Amazon X-Ray tracing is enabled for this state machine.
-	TracingEnabled *bool `json:"tracingEnabled" yaml:"tracingEnabled"`
+	TracingEnabled *bool `field:"optional" json:"tracingEnabled" yaml:"tracingEnabled"`
 }
 
