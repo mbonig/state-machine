@@ -325,12 +325,14 @@ Metric for the number of executions that timed out.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@matthewbonig/state-machine.StateMachine.isOwnedResource">isOwnedResource</a></code> | Returns true if the construct was created by CDK, and false otherwise. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.isResource">isResource</a></code> | Check whether the given construct is a Resource. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.fromStateMachineArn">fromStateMachineArn</a></code> | Import a state machine. |
+| <code><a href="#@matthewbonig/state-machine.StateMachine.fromStateMachineName">fromStateMachineName</a></code> | Import a state machine via resource name. |
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@matthewbonig/state-machine.StateMachine.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@matthewbonig/state-machine.StateMachine.isConstruct"></a>
 
 ```typescript
 import { StateMachine } from '@matthewbonig/state-machine'
@@ -340,11 +342,41 @@ StateMachine.isConstruct(x: any)
 
 Checks if `x` is a construct.
 
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
 ###### `x`<sup>Required</sup> <a name="x" id="@matthewbonig/state-machine.StateMachine.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
 Any object.
+
+---
+
+##### `isOwnedResource` <a name="isOwnedResource" id="@matthewbonig/state-machine.StateMachine.isOwnedResource"></a>
+
+```typescript
+import { StateMachine } from '@matthewbonig/state-machine'
+
+StateMachine.isOwnedResource(construct: IConstruct)
+```
+
+Returns true if the construct was created by CDK, and false otherwise.
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@matthewbonig/state-machine.StateMachine.isOwnedResource.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
 
 ---
 
@@ -387,6 +419,34 @@ Import a state machine.
 ---
 
 ###### `stateMachineArn`<sup>Required</sup> <a name="stateMachineArn" id="@matthewbonig/state-machine.StateMachine.fromStateMachineArn.parameter.stateMachineArn"></a>
+
+- *Type:* string
+
+---
+
+##### `fromStateMachineName` <a name="fromStateMachineName" id="@matthewbonig/state-machine.StateMachine.fromStateMachineName"></a>
+
+```typescript
+import { StateMachine } from '@matthewbonig/state-machine'
+
+StateMachine.fromStateMachineName(scope: Construct, id: string, stateMachineName: string)
+```
+
+Import a state machine via resource name.
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@matthewbonig/state-machine.StateMachine.fromStateMachineName.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+###### `id`<sup>Required</sup> <a name="id" id="@matthewbonig/state-machine.StateMachine.fromStateMachineName.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `stateMachineName`<sup>Required</sup> <a name="stateMachineName" id="@matthewbonig/state-machine.StateMachine.fromStateMachineName.parameter.stateMachineName"></a>
 
 - *Type:* string
 
