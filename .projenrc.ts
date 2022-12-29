@@ -1,6 +1,7 @@
-const { awscdk } = require('projen');
-const { NpmAccess } = require('projen/lib/javascript');
-let lodash = 'lodash.merge';
+import { awscdk } from 'projen';
+import { NpmAccess } from 'projen/lib/javascript';
+
+const lodash = 'lodash.merge';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Matthew Bonig',
   authorAddress: 'matthew.bonig@gmail.com',
@@ -9,14 +10,17 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@matthewbonig/state-machine',
   repositoryUrl: 'https://github.com/mbonig/state-machine.git',
-  deps: [lodash],
-  bundledDeps: [lodash],
+  deps: [lodash, 'case', 'projen'],
+  peerDeps: ['projen'],
+  bundledDeps: [lodash, 'case'],
   npmAccess: NpmAccess.PUBLIC,
   gitignore: ['.idea/'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],
-  publishToGo: {
+  // temporarily disabling go compilation
+  /*publishToGo: {
     moduleName: 'github.com/mbonig/state-machine',
-  },
+  },*/
+  projenrcTs: true,
   depsUpgrade: false,
   publishToPypi: {
     distName: 'mbonig.state-machine',

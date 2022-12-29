@@ -18,6 +18,62 @@ Create a new instance of this construct, handing it a fully parsed version of th
 Then add overridden values. 
 The fields in the `overrides` field should match the `States` field of the ASL.
 
+### Projen component
+
+There is a projen component included in this library which will help you in using the construct. It works similar
+to the [auto-discovery feature](https://projen.io/awscdk.html#aws-lambda-functions). To use it, first add the component
+to your projen project:
+
+```js
+// ...
+const { StepFunctionsAutoDiscover } = require('@matthewbonig/state-machine');
+
+const project = new awscdk.AwsCdkTypeScriptApp({
+  // ...,
+  deps: [
+    // ...,
+    '@matthewbonig/state-machine',
+  ]
+});
+
+new StepFunctionsAutoDiscover(project, {
+  srcdir: project.srcdir,
+});
+```
+
+Now projen will look for any files with a suffix `.workflow.json` and generate beside it:
+* A typed overrides interface which is based on your workflow.
+* A construct based on StateMachine that uses this override.
+
+Instead of using the StateMachine construct directly you can now use the generated one:
+
+```text
+.
+├── MyFancyThing.workflow.json
+└── MyFancyThing-statemachine.ts
+```
+
+```ts
+export class SomeStack extends Stack {
+  constructor(scope: Construct, id: string, props: StackProps) {
+    super(scope, id, props);
+    const handler = new NodejsFunction(this, 'MyHandler');
+    new SomeFancyThingStateMachine(this, 'MyFancyWorkflow', {
+      overrides: {
+        'My First State': {
+          Parameters: {
+            FunctionName: handler.functionName
+          }
+        }
+      }
+    })
+  }
+}
+```
+
+> :warning: **The interfaces and constructs generated here are NOT jsii compliant (they use Partials and Omits) and cannot be 
+compiled by jsii into other languages. If you plan to distribute any libraries you cannot use this.**
+
 ### Examples
 
 ```ts
@@ -130,6 +186,8 @@ In this example, the ASL has a state called 'Read database credentials secret' a
 CDK generated value.
 Future changes can be done by editing, debugging, and testing the state machine directly in the Workflow Studio.
 Once everything is working properly, copy and paste the ASL back to your local file.
+
+
 
 ## Issues
 
