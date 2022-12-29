@@ -647,5 +647,160 @@ Specifies whether Amazon X-Ray tracing is enabled for this state machine.
 
 ---
 
+### StepFunctionsAutoDiscoverOptions <a name="StepFunctionsAutoDiscoverOptions" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions"></a>
+
+#### Initializer <a name="Initializer" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.Initializer"></a>
+
+```typescript
+import { StepFunctionsAutoDiscoverOptions } from '@matthewbonig/state-machine'
+
+const stepFunctionsAutoDiscoverOptions: StepFunctionsAutoDiscoverOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.cdkDeps">cdkDeps</a></code> | <code>projen.awscdk.AwsCdkDeps</code> | AWS CDK dependency manager. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.tsconfigPath">tsconfigPath</a></code> | <code>string</code> | Path to the tsconfig file to use for integration tests. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Project source tree (relative to project output directory). |
+
+---
+
+##### `cdkDeps`<sup>Required</sup> <a name="cdkDeps" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.cdkDeps"></a>
+
+```typescript
+public readonly cdkDeps: AwsCdkDeps;
+```
+
+- *Type:* projen.awscdk.AwsCdkDeps
+
+AWS CDK dependency manager.
+
+---
+
+##### `tsconfigPath`<sup>Required</sup> <a name="tsconfigPath" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.tsconfigPath"></a>
+
+```typescript
+public readonly tsconfigPath: string;
+```
+
+- *Type:* string
+
+Path to the tsconfig file to use for integration tests.
+
+---
+
+##### `srcdir`<sup>Required</sup> <a name="srcdir" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.srcdir"></a>
+
+```typescript
+public readonly srcdir: string;
+```
+
+- *Type:* string
+
+Project source tree (relative to project output directory).
+
+---
+
+## Classes <a name="Classes" id="Classes"></a>
+
+### StepFunctionsAutoDiscover <a name="StepFunctionsAutoDiscover" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover"></a>
+
+#### Initializers <a name="Initializers" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer"></a>
+
+```typescript
+import { StepFunctionsAutoDiscover } from '@matthewbonig/state-machine'
+
+new StepFunctionsAutoDiscover(project: Project, options: StepFunctionsAutoDiscoverOptions)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.options">options</a></code> | <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a></code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project"></a>
+
+- *Type:* projen.Project
+
+---
+
+##### `options`<sup>Required</sup> <a name="options" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.options"></a>
+
+- *Type:* <a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
+
+---
+
+##### `postSynthesize` <a name="postSynthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.postSynthesize"></a>
+
+```typescript
+public postSynthesize(): void
+```
+
+Called after synthesis.
+
+Order is *not* guaranteed.
+
+##### `preSynthesize` <a name="preSynthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.preSynthesize"></a>
+
+```typescript
+public preSynthesize(): void
+```
+
+Called before synthesis.
+
+##### `synthesize` <a name="synthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.synthesize"></a>
+
+```typescript
+public synthesize(): void
+```
+
+Synthesizes files to the project output directory.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.entrypoints">entrypoints</a></code> | <code>string[]</code> | Auto-discovered entry points with paths relative to the project directory. |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.project"></a>
+
+```typescript
+public readonly project: Project;
+```
+
+- *Type:* projen.Project
+
+---
+
+##### `entrypoints`<sup>Required</sup> <a name="entrypoints" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.entrypoints"></a>
+
+```typescript
+public readonly entrypoints: string[];
+```
+
+- *Type:* string[]
+
+Auto-discovered entry points with paths relative to the project directory.
+
+---
+
 
 
