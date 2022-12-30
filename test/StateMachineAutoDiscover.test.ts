@@ -1,26 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { DependencyType } from 'projen';
-import { AwsCdkDeps, AwsCdkDepsJs } from 'projen/lib/awscdk';
-import { TypeScriptProject } from 'projen/lib/typescript';
+import { AwsCdkTypeScriptApp } from 'projen/lib/awscdk';
 import { synthSnapshot } from 'projen/lib/util/synth';
 import { StepFunctionsAutoDiscover } from '../src/StepFunctionsAutoDiscover';
 
-
-function cdkDepsForProject(
-  project: TypeScriptProject,
-  cdkVersion = '1.0.0',
-): AwsCdkDeps {
-  return new AwsCdkDepsJs(project, {
-    cdkVersion: cdkVersion,
-    dependencyType: DependencyType.RUNTIME,
-  });
-}
-
 test('simple snapshot', () => {
-  const project = new TypeScriptProject({
+  const project = new AwsCdkTypeScriptApp({
     name: 'test',
     defaultReleaseBranch: 'main',
+    cdkVersion: '2.53.0',
   });
 
   // add a test file...
@@ -29,11 +17,7 @@ test('simple snapshot', () => {
     path.join(__dirname, 'step-functions', 'test.workflow.json'),
     path.join(project.outdir, project.srcdir, 'test.workflow.json'),
   );
-  new StepFunctionsAutoDiscover(project, {
-    srcdir: project.srcdir,
-    tsconfigPath: path.join(__dirname, '..'),
-    cdkDeps: cdkDepsForProject(project),
-  });
+  new StepFunctionsAutoDiscover(project);
   const snap = synthSnapshot(project);
 
   expect(snap['src/test-statemachine.ts']).toMatchSnapshot();

@@ -3,30 +3,44 @@ import * as path from 'path';
 import { basename, dirname, extname, join } from 'path';
 import { pascal } from 'case';
 import { Component, Project, SourceCode } from 'projen';
-import { AutoDiscoverCommonOptions } from 'projen/lib/awscdk';
+import { AwsCdkTypeScriptApp } from 'projen/lib/awscdk';
 import { AwsCdkDeps } from 'projen/lib/awscdk/awscdk-deps';
 import { AutoDiscoverBase } from 'projen/lib/cdk';
 import { buildStateType } from './BuildStateType';
 
 const JSON_STEPFUNCTION_EXT = '.workflow.json';
 
-export interface StepFunctionsAutoDiscoverOptions extends AutoDiscoverCommonOptions {
-  /**
-   * Project source tree (relative to project output directory).
-   */
-  readonly srcdir: string;
+/**
+ * For future use. No properties, yet.
+ */
+export interface StepFunctionsAutoDiscoverOptions {
+
 }
 
+/**
+ * A projen component for discovering AWS Step Function state machine workflow ASL files
+ * and generating a strongly typed interface and construct to use it.
+ *
+ * Simply add a new instance and hand it your AwsCdkTypeScriptApp projen class:
+ * ```
+ * const project = new AwsCdkTypeScriptApp({ ... });
+ * new StepFunctionsAutoDiscover(project);
+ * ```
+ *
+ * And any *.workflow.json file will cause the generation of a new strongly-typed StateMachine-derived class you can use.
+ * Note that these constructs are NOT jsii-compatible. If you need that,
+ * please open an [issue](https://github.com/mbonig/state-machine/issues/new)
+ */
 export class StepFunctionsAutoDiscover extends AutoDiscoverBase {
-  constructor(project: Project, options: StepFunctionsAutoDiscoverOptions) {
+  constructor(project: AwsCdkTypeScriptApp, _options?: StepFunctionsAutoDiscoverOptions) {
     super(project, {
       extension: JSON_STEPFUNCTION_EXT,
-      projectdir: options.srcdir,
+      projectdir: project.srcdir,
     });
     for (const entrypoint of this.entrypoints) {
       new StepFunctionsStateMachine(this.project, {
         workflowAsl: entrypoint,
-        cdkDeps: options.cdkDeps,
+        cdkDeps: project.cdkDeps,
       });
     }
   }
@@ -39,6 +53,9 @@ export interface StepFunctionsStateMachineOptions {
   readonly cdkDeps: AwsCdkDeps;
 }
 
+/**
+ * Don't use this class directly.
+ */
 export class StepFunctionsStateMachine extends Component {
   constructor(project: Project, options: StepFunctionsStateMachineOptions) {
     super(project);

@@ -36,14 +36,12 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   ]
 });
 
-new StepFunctionsAutoDiscover(project, {
-  srcdir: project.srcdir,
-});
+new StepFunctionsAutoDiscover(project);
 ```
 
-Now projen will look for any files with a suffix `.workflow.json` and generate beside it:
+Now projen will look for any files with a suffix `.workflow.json` and generate new files beside the .json:
 * A typed overrides interface which is based on your workflow.
-* A construct based on StateMachine that uses this override.
+* A construct derived from StateMachine that uses this override.
 
 Instead of using the StateMachine construct directly you can now use the generated one:
 
@@ -186,8 +184,6 @@ In this example, the ASL has a state called 'Read database credentials secret' a
 CDK generated value.
 Future changes can be done by editing, debugging, and testing the state machine directly in the Workflow Studio.
 Once everything is working properly, copy and paste the ASL back to your local file.
-
-
 
 ## Issues
 

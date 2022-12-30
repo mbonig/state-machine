@@ -709,6 +709,10 @@ Specifies whether Amazon X-Ray tracing is enabled for this state machine.
 
 ### StepFunctionsAutoDiscoverOptions <a name="StepFunctionsAutoDiscoverOptions" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions"></a>
 
+For future use.
+
+No properties, yet.
+
 #### Initializer <a name="Initializer" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.Initializer"></a>
 
 ```typescript
@@ -717,78 +721,45 @@ import { StepFunctionsAutoDiscoverOptions } from '@matthewbonig/state-machine'
 const stepFunctionsAutoDiscoverOptions: StepFunctionsAutoDiscoverOptions = { ... }
 ```
 
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.cdkDeps">cdkDeps</a></code> | <code>projen.awscdk.AwsCdkDeps</code> | AWS CDK dependency manager. |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.tsconfigPath">tsconfigPath</a></code> | <code>string</code> | Path to the tsconfig file to use for integration tests. |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.srcdir">srcdir</a></code> | <code>string</code> | Project source tree (relative to project output directory). |
-
----
-
-##### `cdkDeps`<sup>Required</sup> <a name="cdkDeps" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.cdkDeps"></a>
-
-```typescript
-public readonly cdkDeps: AwsCdkDeps;
-```
-
-- *Type:* projen.awscdk.AwsCdkDeps
-
-AWS CDK dependency manager.
-
----
-
-##### `tsconfigPath`<sup>Required</sup> <a name="tsconfigPath" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.tsconfigPath"></a>
-
-```typescript
-public readonly tsconfigPath: string;
-```
-
-- *Type:* string
-
-Path to the tsconfig file to use for integration tests.
-
----
-
-##### `srcdir`<sup>Required</sup> <a name="srcdir" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.srcdir"></a>
-
-```typescript
-public readonly srcdir: string;
-```
-
-- *Type:* string
-
-Project source tree (relative to project output directory).
-
----
 
 ## Classes <a name="Classes" id="Classes"></a>
 
 ### StepFunctionsAutoDiscover <a name="StepFunctionsAutoDiscover" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover"></a>
+
+A projen component for discovering AWS Step Function state machine workflow ASL files and generating a strongly typed interface and construct to use it.
+
+Simply add a new instance and hand it your AwsCdkTypeScriptApp projen class:
+```
+const project = new AwsCdkTypeScriptApp({ ... });
+new StepFunctionsAutoDiscover(project);
+```
+
+And any *.workflow.json file will cause the generation of a new strongly-typed StateMachine-derived class you can use.
+Note that these constructs are NOT jsii-compatible. If you need that,
+please open an [issue](https://github.com/mbonig/state-machine/issues/new)
 
 #### Initializers <a name="Initializers" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer"></a>
 
 ```typescript
 import { StepFunctionsAutoDiscover } from '@matthewbonig/state-machine'
 
-new StepFunctionsAutoDiscover(project: Project, options: StepFunctionsAutoDiscoverOptions)
+new StepFunctionsAutoDiscover(project: AwsCdkTypeScriptApp, _options?: StepFunctionsAutoDiscoverOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project">project</a></code> | <code>projen.Project</code> | *No description.* |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.options">options</a></code> | <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a></code> | *No description.* |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project">project</a></code> | <code>projen.awscdk.AwsCdkTypeScriptApp</code> | *No description.* |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter._options">_options</a></code> | <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a></code> | *No description.* |
 
 ---
 
 ##### `project`<sup>Required</sup> <a name="project" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project"></a>
 
-- *Type:* projen.Project
+- *Type:* projen.awscdk.AwsCdkTypeScriptApp
 
 ---
 
-##### `options`<sup>Required</sup> <a name="options" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.options"></a>
+##### `_options`<sup>Optional</sup> <a name="_options" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter._options"></a>
 
 - *Type:* <a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a>
 
