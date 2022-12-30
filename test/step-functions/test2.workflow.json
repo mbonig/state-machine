@@ -1,0 +1,167 @@
+{
+  "Comment": "A description of my state machine",
+  "StartAt": "Get Pod To Execute On",
+  "States": {
+    "Get Pod To Execute On": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:us-east-1:754664436462:function:qa1-Cluster-KubectlProviderAD5CE4B2-MASGyPp0MUAp",
+        "Payload": {
+          "commands": [
+            "get",
+            "pods",
+            "--selector=app=belle",
+            "-ojson"
+          ]
+        }
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 6,
+          "BackoffRate": 2
+        }
+      ],
+      "ResultSelector": {
+        "belle.$": "$.Payload"
+      },
+      "ResultPath": "$.pods",
+      "Next": "Generate Commands",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "Notify Slack of Error",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    "Generate Commands": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws:lambda:us-east-1:754664436462:function:qa1-Cluster-GetConfigGetCommands036E8CAC-bfIUgcupKlMI"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 6,
+          "BackoffRate": 2
+        }
+      ],
+      "ResultSelector": {
+        "commands.$": "$.Payload.commands"
+      },
+      "ResultPath": "$.commands",
+      "Next": "Run Command",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "Notify Slack of Error",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    "Run Command": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "Payload": {
+          "commands.$": "$.commands.commands"
+        },
+        "FunctionName": "arn:aws:lambda:us-east-1:754664436462:function:qa1-Cluster-KubectlProviderAD5CE4B2-MASGyPp0MUAp"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 6,
+          "BackoffRate": 2
+        }
+      ],
+      "ResultPath": "$.commandResults",
+      "Next": "Notify Slack",
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "Notify Slack of Error",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    "Notify Slack": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws:lambda:us-east-1:754664436462:function:qa1-Cluster-GetConfigNotifySlackHandlerCF56DE5E-flBCIqABv0mk"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 6,
+          "BackoffRate": 2
+        }
+      ],
+      "ResultPath": null,
+      "End": true,
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "Notify Slack of Error",
+          "ResultPath": "$.error"
+        }
+      ]
+    },
+    "Notify Slack of Error": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws:lambda:us-east-1:754664436462:function:qa1-Cluster-GetConfigNotifySlackErrorHandlerA0AA40-JVUiGyKvwHRm"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 6,
+          "BackoffRate": 2
+        }
+      ],
+      "End": true,
+      "ResultPath": null
+    }
+  }
+}
