@@ -99,7 +99,7 @@ export class StepFunctionsStateMachine extends Component {
 
     src.open(`export interface ${constructName}Overrides {`);
 
-    const workflowDefinition = JSON.parse(fs.readFileSync(workflowAsl).toString());
+    const workflowDefinition = JSON.parse(fs.readFileSync(join(project.outdir, workflowAsl)).toString());
     if (!workflowDefinition.States) {
       throw new Error(`The workflow file ${workflowAsl} doesn't appear to be a valid ASL file, it doesn't contain a 'States' field`);
     }
