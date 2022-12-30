@@ -9,7 +9,7 @@ import path from 'path';
 export interface TestStateMachineOverrides {
   readonly 'Which database?': Partial<{
     'Type': string;
-    'Choices': [Partial<{
+    'Choices': Partial<[Partial<{
       'Variable': string;
       'StringMatches': string;
       'Next': string;
@@ -21,7 +21,7 @@ export interface TestStateMachineOverrides {
       'Variable': string;
       'StringMatches': string;
       'Next': string;
-    }>];
+    }>]>;
   }>;
   readonly 'Get belle secret': Partial<{
     'Type': string;
@@ -47,12 +47,12 @@ export interface TestStateMachineOverrides {
       'Payload.$': string;
       'FunctionName': string;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultPath': string;
     'Comment': string;
     'Next': string;
@@ -72,12 +72,12 @@ export interface TestStateMachineOverrides {
         'databaseName.$': string;
       }>;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultPath': string;
     'Next': string;
   }>;
@@ -127,12 +127,12 @@ export interface TestStateMachineOverrides {
       'Payload.$': string;
       'FunctionName': string;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultPath': string;
     'Comment': string;
     'ResultSelector': Partial<{
@@ -152,12 +152,12 @@ export interface TestStateMachineOverrides {
         'databaseName.$': string;
       }>;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultPath': string;
     'Next': string;
   }>;
@@ -207,12 +207,12 @@ export interface TestStateMachineOverrides {
       'Payload.$': string;
       'FunctionName': string;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultPath': string;
     'Comment': string;
     'Next': string;
@@ -232,12 +232,12 @@ export interface TestStateMachineOverrides {
         'databaseName.$': string;
       }>;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultPath': string;
     'Next': string;
   }>;
@@ -265,7 +265,7 @@ export interface TestStateMachineOverrides {
   }>;
 }
 export interface TestStateMachineProps extends Omit<StateMachineProps, 'overrides' | 'definition'> {
-  readonly overrides: TestStateMachineOverrides;
+  readonly overrides: Partial<TestStateMachineOverrides>;
 }
 export class TestStateMachine extends StateMachine {
   constructor(scope: Construct, id: string, props: TestStateMachineProps) {
@@ -290,25 +290,25 @@ export interface TestStateMachineOverrides {
     'Parameters': Partial<{
       'FunctionName': string;
       'Payload': Partial<{
-        'commands': [string,string,string,string];
+        'commands': Partial<[string,string,string,string]>;
       }>;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultSelector': Partial<{
       'belle.$': string;
     }>;
     'ResultPath': string;
     'Next': string;
-    'Catch': [Partial<{
-      'ErrorEquals': [string];
+    'Catch': Partial<[Partial<{
+      'ErrorEquals': Partial<[string]>;
       'Next': string;
       'ResultPath': string;
-    }>];
+    }>]>;
   }>;
   readonly 'Generate Commands': Partial<{
     'Type': string;
@@ -317,22 +317,22 @@ export interface TestStateMachineOverrides {
       'Payload.$': string;
       'FunctionName': string;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultSelector': Partial<{
       'commands.$': string;
     }>;
     'ResultPath': string;
     'Next': string;
-    'Catch': [Partial<{
-      'ErrorEquals': [string];
+    'Catch': Partial<[Partial<{
+      'ErrorEquals': Partial<[string]>;
       'Next': string;
       'ResultPath': string;
-    }>];
+    }>]>;
   }>;
   readonly 'Run Command': Partial<{
     'Type': string;
@@ -343,19 +343,19 @@ export interface TestStateMachineOverrides {
       }>;
       'FunctionName': string;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultPath': string;
     'Next': string;
-    'Catch': [Partial<{
-      'ErrorEquals': [string];
+    'Catch': Partial<[Partial<{
+      'ErrorEquals': Partial<[string]>;
       'Next': string;
       'ResultPath': string;
-    }>];
+    }>]>;
   }>;
   readonly 'Notify Slack': Partial<{
     'Type': string;
@@ -364,20 +364,20 @@ export interface TestStateMachineOverrides {
       'Payload.$': string;
       'FunctionName': string;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'ResultPath': any;
     'End': Partial<{
     }>;
-    'Catch': [Partial<{
-      'ErrorEquals': [string];
+    'Catch': Partial<[Partial<{
+      'ErrorEquals': Partial<[string]>;
       'Next': string;
       'ResultPath': string;
-    }>];
+    }>]>;
   }>;
   readonly 'Notify Slack of Error': Partial<{
     'Type': string;
@@ -386,19 +386,19 @@ export interface TestStateMachineOverrides {
       'Payload.$': string;
       'FunctionName': string;
     }>;
-    'Retry': [Partial<{
-      'ErrorEquals': [string,string,string];
+    'Retry': Partial<[Partial<{
+      'ErrorEquals': Partial<[string,string,string]>;
       'IntervalSeconds': number;
       'MaxAttempts': number;
       'BackoffRate': number;
-    }>];
+    }>]>;
     'End': Partial<{
     }>;
     'ResultPath': any;
   }>;
 }
 export interface TestStateMachineProps extends Omit<StateMachineProps, 'overrides' | 'definition'> {
-  readonly overrides: TestStateMachineOverrides;
+  readonly overrides: Partial<TestStateMachineOverrides>;
 }
 export class TestStateMachine extends StateMachine {
   constructor(scope: Construct, id: string, props: TestStateMachineProps) {

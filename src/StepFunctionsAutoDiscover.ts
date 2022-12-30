@@ -110,7 +110,7 @@ export class StepFunctionsStateMachine extends Component {
     src.close('}');
 
     src.open(`export interface ${constructName}Props extends Omit<StateMachineProps, 'overrides' | 'definition'> {`);
-    src.line(`readonly overrides: ${constructName}Overrides;`);
+    src.line(`readonly overrides: Partial<${constructName}Overrides>;`);
     src.close('}');
 
 
