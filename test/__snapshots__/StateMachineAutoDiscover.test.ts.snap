@@ -265,7 +265,7 @@ export interface TestStateMachineOverrides {
   }>;
 }
 export interface TestStateMachineProps extends Omit<StateMachineProps, 'overrides' | 'definition'> {
-  readonly overrides: TestStateMachineOverrides;
+  readonly overrides: Partial<TestStateMachineOverrides>;
 }
 export class TestStateMachine extends StateMachine {
   constructor(scope: Construct, id: string, props: TestStateMachineProps) {
@@ -398,7 +398,7 @@ export interface TestStateMachineOverrides {
   }>;
 }
 export interface TestStateMachineProps extends Omit<StateMachineProps, 'overrides' | 'definition'> {
-  readonly overrides: TestStateMachineOverrides;
+  readonly overrides: Partial<TestStateMachineOverrides>;
 }
 export class TestStateMachine extends StateMachine {
   constructor(scope: Construct, id: string, props: TestStateMachineProps) {
