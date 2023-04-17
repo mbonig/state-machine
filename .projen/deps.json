@@ -108,6 +108,10 @@
       "type": "bundled"
     },
     {
+      "name": "js-yaml",
+      "type": "bundled"
+    },
+    {
       "name": "lodash.merge",
       "type": "bundled"
     },

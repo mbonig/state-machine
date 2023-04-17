@@ -122,10 +122,15 @@ export class StepFunctionsStateMachine extends Component {
     src.line('import fs from \'fs\';');
     src.line('import path from \'path\';');
 
+    let isYaml = /(yaml|yml)/.test(extension);
+    if (isYaml) {
+      src.line('import * as yaml \'js-yaml\';');
+    }
+
     src.open(`export interface ${constructName}Overrides {`);
 
     let workflowDefinition: any;
-    if (/(yaml|yml)/.test(extension)) {
+    if (isYaml) {
       workflowDefinition = yaml.load(fs.readFileSync(join(project.outdir, workflowAsl)).toString());
     } else {
       workflowDefinition = JSON.parse(fs.readFileSync(join(project.outdir, workflowAsl)).toString());
@@ -150,7 +155,13 @@ export class StepFunctionsStateMachine extends Component {
     src.open('super(scope, id, {');
     src.line('...props,');
     const relativeFile = path.basename(workflowAsl);
-    src.line(`definition: JSON.parse(fs.readFileSync(path.join(__dirname, '${relativeFile}')).toString()),`);
+    if (isYaml) {
+      src.line(`definition: yaml.load(fs.readFileSync(path.join(__dirname, '${relativeFile}')).toString()),`);
+      src.line('aslYaml: true,');
+    } else {
+      src.line(`definition: JSON.parse(fs.readFileSync(path.join(__dirname, '${relativeFile}')).toString()),`);
+
+    }
     src.close('});');
     src.close('}');
     src.close('}');

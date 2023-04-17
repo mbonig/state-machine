@@ -693,6 +693,7 @@ import { StateMachine, StateMachineProps } from '@matthewbonig/state-machine';
 import { Construct } from 'constructs';
 import fs from 'fs';
 import path from 'path';
+import * as yaml 'js-yaml';
 export interface TestStateMachineOverrides {
   readonly 'Check Stock Price': Partial<{
     'Type': string;
@@ -760,7 +761,8 @@ export class TestStateMachine extends StateMachine {
   constructor(scope: Construct, id: string, props: TestStateMachineProps) {
     super(scope, id, {
       ...props,
-      definition: JSON.parse(fs.readFileSync(path.join(__dirname, 'test.yaml.asl')).toString()),
+      definition: yaml.load(fs.readFileSync(path.join(__dirname, 'test.yaml.asl')).toString()),
+      aslYaml: true,
     });
   }
 }"
@@ -772,6 +774,7 @@ import { StateMachine, StateMachineProps } from '@matthewbonig/state-machine';
 import { Construct } from 'constructs';
 import fs from 'fs';
 import path from 'path';
+import * as yaml 'js-yaml';
 export interface TestStateMachineOverrides {
   readonly 'Check Stock Price': Partial<{
     'Type': string;
@@ -839,7 +842,8 @@ export class TestStateMachine extends StateMachine {
   constructor(scope: Construct, id: string, props: TestStateMachineProps) {
     super(scope, id, {
       ...props,
-      definition: JSON.parse(fs.readFileSync(path.join(__dirname, 'test.yml.asl')).toString()),
+      definition: yaml.load(fs.readFileSync(path.join(__dirname, 'test.yml.asl')).toString()),
+      aslYaml: true,
     });
   }
 }"

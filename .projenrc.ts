@@ -14,7 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   deps: [lodash, 'case', 'projen', 'js-yaml'],
   peerDeps: ['projen', 'constructs'],
   devDeps: ['@types/js-yaml'],
-  bundledDeps: [lodash, 'case'],
+  bundledDeps: [lodash, 'case', 'js-yaml'],
   npmAccess: NpmAccess.PUBLIC,
   gitignore: ['.idea/'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],

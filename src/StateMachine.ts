@@ -3,6 +3,8 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 import * as aws_stepfunctions from 'aws-cdk-lib/aws-stepfunctions';
 import { CfnStateMachine, LogOptions, Pass, StateMachineType } from 'aws-cdk-lib/aws-stepfunctions';
 import { Construct } from 'constructs';
+import * as yaml from 'js-yaml';
+
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const merge = require('lodash.merge');
 
@@ -62,6 +64,13 @@ export interface StateMachineProps {
    */
   readonly tracingEnabled?: boolean;
 
+  /**
+   * Should the ASL definition be written as YAML
+   *
+   * @default false
+   */
+  readonly aslYaml?: boolean;
+
 }
 
 export class StateMachine extends aws_stepfunctions.StateMachine {
@@ -73,7 +82,14 @@ export class StateMachine extends aws_stepfunctions.StateMachine {
     });
     scope.node.tryRemoveChild('THISWILLBEDELETEDRIGHTAWAY');
     const mergedDefinition = merge(props.definition, { States: props.overrides });
-    (this.node.defaultChild as CfnStateMachine).definitionString = JSON.stringify(mergedDefinition);
+    let definitionString: string;
+    if (props.aslYaml) {
+      definitionString = yaml.dump(mergedDefinition);
+    } else {
+      definitionString = JSON.stringify(mergedDefinition);
+
+    }
+    (this.node.defaultChild as CfnStateMachine).definitionString = definitionString;
   }
 }
 

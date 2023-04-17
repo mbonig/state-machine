@@ -71,6 +71,7 @@
   },
   "bundledDependencies": [
     "case",
+    "js-yaml",
     "lodash.merge"
   ],
   "keywords": [
