@@ -8,13 +8,23 @@ import { AwsCdkDeps } from 'projen/lib/awscdk/awscdk-deps';
 import { AutoDiscoverBase } from 'projen/lib/cdk';
 import { buildStateType } from './BuildStateType';
 
-const JSON_STEPFUNCTION_EXT = '.workflow.json';
+/**
+ * The original extension used to search for ASL files.
+ */
+export const JSON_STEPFUNCTION_EXT = '.workflow.json';
 
 /**
- * For future use. No properties, yet.
+ * The AWS-recommended extension for ASL files.
  */
-export interface StepFunctionsAutoDiscoverOptions {
+export const AWS_RECOMMENDED_JSON_EXT = '.json.asl';
 
+export interface StepFunctionsAutoDiscoverOptions {
+  /**
+   * An optional extension to use for discovering state machine files.
+   *
+   * @default '.workflow.json' (JSON_STEPFUNCTION_EXT)
+   */
+  readonly extension?: string;
 }
 
 /**
@@ -33,20 +43,28 @@ export interface StepFunctionsAutoDiscoverOptions {
  */
 export class StepFunctionsAutoDiscover extends AutoDiscoverBase {
   constructor(project: AwsCdkTypeScriptApp, _options?: StepFunctionsAutoDiscoverOptions) {
+    if (_options?.extension) {
+      if (!_options.extension.startsWith('.')) {
+        throw new Error('extension must start with a .');
+      }
+    }
+    let extension = _options?.extension || JSON_STEPFUNCTION_EXT;
     super(project, {
-      extension: JSON_STEPFUNCTION_EXT,
+      extension: extension,
       projectdir: project.srcdir,
     });
     for (const entrypoint of this.entrypoints) {
       new StepFunctionsStateMachine(this.project, {
         workflowAsl: entrypoint,
         cdkDeps: project.cdkDeps,
+        extension,
       });
     }
   }
 }
 
 export interface StepFunctionsStateMachineOptions {
+  readonly extension: string;
   readonly constructFile?: string;
   readonly workflowAsl: string;
   readonly constructName?: string;
@@ -60,20 +78,21 @@ export class StepFunctionsStateMachine extends Component {
   constructor(project: Project, options: StepFunctionsStateMachineOptions) {
     super(project);
 
+    const extension = options.extension ?? JSON_STEPFUNCTION_EXT;
     const workflowAsl = options.workflowAsl;
 
     if (
-      !workflowAsl.endsWith(JSON_STEPFUNCTION_EXT)
+      !workflowAsl.endsWith(extension)
     ) {
       throw new Error(
-        `${workflowAsl} must have a ${JSON_STEPFUNCTION_EXT} extension`,
+        `${workflowAsl} must have a ${extension} extension`,
       );
     }
     const basePath = join(
       dirname(workflowAsl),
       basename(
         workflowAsl,
-        JSON_STEPFUNCTION_EXT,
+        extension,
       ),
     );
     const constructFile = options.constructFile ?? `${basePath}-statemachine.ts`;
