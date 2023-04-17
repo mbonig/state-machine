@@ -5,7 +5,7 @@ import * as path from 'path';
 import { AwsCdkTypeScriptApp } from 'projen/lib/awscdk';
 import { synthSnapshot } from 'projen/lib/util/synth';
 import { StepFunctionsAutoDiscover } from '../src';
-import { AWS_RECOMMENDED_EXT, JSON_STEPFUNCTION_EXT } from '../src/StepFunctionsAutoDiscover';
+import { AWS_RECOMMENDED_JSON_EXT, JSON_STEPFUNCTION_EXT } from '../src/StepFunctionsAutoDiscover';
 
 
 function setupTestProject(testFile: string, extension: string = JSON_STEPFUNCTION_EXT, srcFile: string = 'test.workflow.json') {
@@ -46,7 +46,7 @@ describe('AutoDiscover', () => {
 
 describe('Extension parameter', () => {
   test('takes another extension', async () => {
-    const project = setupTestProject('test.json.asl', AWS_RECOMMENDED_EXT, 'test.json.asl');
+    const project = setupTestProject('test.json.asl', AWS_RECOMMENDED_JSON_EXT, 'test.json.asl');
     const snap = synthSnapshot(project);
     expect(snap['src/test-statemachine.ts']).toMatchSnapshot();
   });

@@ -16,7 +16,7 @@ export const JSON_STEPFUNCTION_EXT = '.workflow.json';
 /**
  * The AWS-recommended extension for ASL files.
  */
-export const AWS_RECOMMENDED_EXT = '.json.asl';
+export const AWS_RECOMMENDED_JSON_EXT = '.json.asl';
 
 export interface StepFunctionsAutoDiscoverOptions {
   /**

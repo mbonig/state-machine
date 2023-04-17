@@ -78,7 +78,7 @@ There is an optional parameter, `extension` that you can pass to have it search 
 AWS recommends that ASL definition files have a `.asl.json` extension, which will be picked up by some IDE
 tools. This extension was recommended after initial development of this component. Therefore, the default is
 to use the original extension. But, you can override this by passing a different extension to the
-AutoDiscover's constructor options. There are two constants defined, `JSON_STEPFUNCTION_EXT` and `AWS_RECOMMENDED_EXT` that you can use.
+AutoDiscover's constructor options. There are two constants defined, `JSON_STEPFUNCTION_EXT` and `AWS_RECOMMENDED_JSON_EXT` that you can use.
 
 ```js
 // ...
@@ -92,7 +92,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   ]
 });
 
-new StepFunctionsAutoDiscover(project, { extension: AWS_RECOMMENDED_EXT });
+new StepFunctionsAutoDiscover(project, { extension: AWS_RECOMMENDED_JSON_EXT });
 ```
 
 ### Examples
