@@ -13,6 +13,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/mbonig/state-machine.git',
   deps: [lodash, 'case', 'projen'],
   peerDeps: ['projen', 'constructs'],
+  devDeps: ['js-yaml'],
   bundledDeps: [lodash, 'case'],
   npmAccess: NpmAccess.PUBLIC,
   gitignore: ['.idea/'],
