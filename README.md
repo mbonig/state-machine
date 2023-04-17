@@ -82,7 +82,7 @@ AutoDiscover's constructor options. There are two constants defined, `JSON_STEPF
 
 ```js
 // ...
-const { StepFunctionsAutoDiscover, AWS_RECOMMENDED_EXT } = require('@matthewbonig/state-machine');
+const { StepFunctionsAutoDiscover, AWS_RECOMMENDED_JSON_EXT } = require('@matthewbonig/state-machine');
 
 const project = new awscdk.AwsCdkTypeScriptApp({
   // ...,
