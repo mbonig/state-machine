@@ -5,7 +5,7 @@ import * as path from 'path';
 import { AwsCdkTypeScriptApp } from 'projen/lib/awscdk';
 import { synthSnapshot } from 'projen/lib/util/synth';
 import { StepFunctionsAutoDiscover } from '../src';
-import { AWS_RECOMMENDED_JSON_EXT, JSON_STEPFUNCTION_EXT } from '../src/StepFunctionsAutoDiscover';
+import { AWS_RECOMMENDED_JSON_EXT, AWS_RECOMMENDED_YAML_EXT, JSON_STEPFUNCTION_EXT } from '../src/StepFunctionsAutoDiscover';
 
 
 function setupTestProject(testFile: string, extension: string = JSON_STEPFUNCTION_EXT, srcFile: string = 'test.workflow.json') {
@@ -28,9 +28,7 @@ function setupTestProject(testFile: string, extension: string = JSON_STEPFUNCTIO
 }
 
 
-describe('AutoDiscover', () => {
-
-
+describe('Json', () => {
   test('simple case', () => {
     const project = setupTestProject('test.workflow.json');
     const snap = synthSnapshot(project);
@@ -42,6 +40,21 @@ describe('AutoDiscover', () => {
     const snap = synthSnapshot(project);
     expect(snap['src/test-statemachine.ts']).toMatchSnapshot();
   });
+});
+
+describe('yaml', () => {
+  test('handles yaml file', async () => {
+    const project = setupTestProject('test.yaml.asl', AWS_RECOMMENDED_YAML_EXT, 'test.yaml.asl' );
+    const snap = synthSnapshot(project);
+    expect(snap['src/test-statemachine.ts']).toMatchSnapshot();
+  });
+
+  test('handles yml file', async () => {
+    const project = setupTestProject('test.yaml.asl', '.yml.asl', 'test.yml.asl' );
+    const snap = synthSnapshot(project);
+    expect(snap['src/test-statemachine.ts']).toMatchSnapshot();
+  });
+
 });
 
 describe('Extension parameter', () => {

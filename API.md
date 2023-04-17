@@ -588,6 +588,7 @@ const stateMachineProps: StateMachineProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@matthewbonig/state-machine.StateMachineProps.property.definition">definition</a></code> | <code>any</code> | An object that can be serialized into an ASL. |
+| <code><a href="#@matthewbonig/state-machine.StateMachineProps.property.aslYaml">aslYaml</a></code> | <code>boolean</code> | Should the ASL definition be written as YAML. |
 | <code><a href="#@matthewbonig/state-machine.StateMachineProps.property.logs">logs</a></code> | <code>aws-cdk-lib.aws_stepfunctions.LogOptions</code> | Defines what execution history events are logged and where they are logged. |
 | <code><a href="#@matthewbonig/state-machine.StateMachineProps.property.overrides">overrides</a></code> | <code>any</code> | An object that matches the schema/shape of the ASL .States map with overridden values. |
 | <code><a href="#@matthewbonig/state-machine.StateMachineProps.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | The execution role for the state machine service. |
@@ -607,6 +608,19 @@ public readonly definition: any;
 - *Type:* any
 
 An object that can be serialized into an ASL.
+
+---
+
+##### `aslYaml`<sup>Optional</sup> <a name="aslYaml" id="@matthewbonig/state-machine.StateMachineProps.property.aslYaml"></a>
+
+```typescript
+public readonly aslYaml: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Should the ASL definition be written as YAML.
 
 ---
 

@@ -6,6 +6,10 @@
       "type": "build"
     },
     {
+      "name": "@types/js-yaml",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^14",
       "type": "build"
@@ -104,6 +108,10 @@
       "type": "bundled"
     },
     {
+      "name": "js-yaml",
+      "type": "bundled"
+    },
+    {
       "name": "lodash.merge",
       "type": "bundled"
     },
@@ -133,6 +141,10 @@
     },
     {
       "name": "case",
+      "type": "runtime"
+    },
+    {
+      "name": "js-yaml",
       "type": "runtime"
     },
     {

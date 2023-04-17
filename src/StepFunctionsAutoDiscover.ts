@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { basename, dirname, extname, join } from 'path';
 import { pascal } from 'case';
+import * as yaml from 'js-yaml';
 import { Component, Project, SourceCode } from 'projen';
 import { AwsCdkTypeScriptApp } from 'projen/lib/awscdk';
 import { AwsCdkDeps } from 'projen/lib/awscdk/awscdk-deps';
@@ -17,6 +18,11 @@ export const JSON_STEPFUNCTION_EXT = '.workflow.json';
  * The AWS-recommended extension for ASL files.
  */
 export const AWS_RECOMMENDED_JSON_EXT = '.json.asl';
+
+/**
+ * The AWS-recommended extension for YAML ASL files.
+ */
+export const AWS_RECOMMENDED_YAML_EXT = '.yaml.asl';
 
 export interface StepFunctionsAutoDiscoverOptions {
   /**
@@ -116,9 +122,20 @@ export class StepFunctionsStateMachine extends Component {
     src.line('import fs from \'fs\';');
     src.line('import path from \'path\';');
 
+    let isYaml = /(yaml|yml)/.test(extension);
+    if (isYaml) {
+      src.line('import * as yaml \'js-yaml\';');
+    }
+
     src.open(`export interface ${constructName}Overrides {`);
 
-    const workflowDefinition = JSON.parse(fs.readFileSync(join(project.outdir, workflowAsl)).toString());
+    let workflowDefinition: any;
+    if (isYaml) {
+      workflowDefinition = yaml.load(fs.readFileSync(join(project.outdir, workflowAsl)).toString());
+    } else {
+      workflowDefinition = JSON.parse(fs.readFileSync(join(project.outdir, workflowAsl)).toString());
+
+    }
     if (!workflowDefinition.States) {
       throw new Error(`The workflow file ${workflowAsl} doesn't appear to be a valid ASL file, it doesn't contain a 'States' field`);
     }
@@ -138,7 +155,13 @@ export class StepFunctionsStateMachine extends Component {
     src.open('super(scope, id, {');
     src.line('...props,');
     const relativeFile = path.basename(workflowAsl);
-    src.line(`definition: JSON.parse(fs.readFileSync(path.join(__dirname, '${relativeFile}')).toString()),`);
+    if (isYaml) {
+      src.line(`definition: yaml.load(fs.readFileSync(path.join(__dirname, '${relativeFile}')).toString()),`);
+      src.line('aslYaml: true,');
+    } else {
+      src.line(`definition: JSON.parse(fs.readFileSync(path.join(__dirname, '${relativeFile}')).toString()),`);
+
+    }
     src.close('});');
     src.close('}');
     src.close('}');
