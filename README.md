@@ -95,6 +95,25 @@ const project = new awscdk.AwsCdkTypeScriptApp({
 new StepFunctionsAutoDiscover(project, { extension: AWS_RECOMMENDED_JSON_EXT });
 ```
 
+### Yaml files
+
+Yaml files are supported as well. You can provide an extension to the AutoDiscover component to have it search for yaml files. If the file has 'yaml' or 'yml' anywhere in the name it will be parsed as yaml. If not, it will be parsed as json.
+
+```js
+// ...
+const { StepFunctionsAutoDiscover } = require('@matthewbonig/state-machine');
+
+const project = new awscdk.AwsCdkTypeScriptApp({
+  // ...,
+  deps: [
+    // ...,
+    '@matthewbonig/state-machine',
+  ]
+});
+
+new StepFunctionsAutoDiscover(project, { extension: '.yaml.asl' });
+```
+
 ### Examples
 
 ```ts
