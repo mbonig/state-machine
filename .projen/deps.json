@@ -58,6 +58,10 @@
       "type": "build"
     },
     {
+      "name": "js-yaml",
+      "type": "build"
+    },
+    {
       "name": "jsii",
       "type": "build"
     },

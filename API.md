@@ -709,10 +709,6 @@ Specifies whether Amazon X-Ray tracing is enabled for this state machine.
 
 ### StepFunctionsAutoDiscoverOptions <a name="StepFunctionsAutoDiscoverOptions" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions"></a>
 
-For future use.
-
-No properties, yet.
-
 #### Initializer <a name="Initializer" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.Initializer"></a>
 
 ```typescript
@@ -721,6 +717,26 @@ import { StepFunctionsAutoDiscoverOptions } from '@matthewbonig/state-machine'
 const stepFunctionsAutoDiscoverOptions: StepFunctionsAutoDiscoverOptions = { ... }
 ```
 
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.extension">extension</a></code> | <code>string</code> | An optional extension to use for discovering state machine files. |
+
+---
+
+##### `extension`<sup>Optional</sup> <a name="extension" id="@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions.property.extension"></a>
+
+```typescript
+public readonly extension: string;
+```
+
+- *Type:* string
+- *Default:* '.workflow.json' (JSON_STEPFUNCTION_EXT)
+
+An optional extension to use for discovering state machine files.
+
+---
 
 ## Classes <a name="Classes" id="Classes"></a>
 

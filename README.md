@@ -72,6 +72,29 @@ export class SomeStack extends Stack {
 > :warning: **The interfaces and constructs generated here are NOT jsii compliant (they use Partials and Omits) and cannot be 
 compiled by jsii into other languages. If you plan to distribute any libraries you cannot use this.**
 
+### Alternative Extensions
+
+There is an optional parameter, `extension` that you can pass to have it search for alternative extensions.
+AWS recommends that ASL definition files have a `.asl.json` extension, which will be picked up by some IDE
+tools. This extension was recommended after initial development of this component. Therefore, the default is
+to use the original extension. But, you can override this by passing a different extension to the
+AutoDiscover's constructor options. There are two constants defined, `JSON_STEPFUNCTION_EXT` and `AWS_RECOMMENDED_EXT` that you can use.
+
+```js
+// ...
+const { StepFunctionsAutoDiscover, AWS_RECOMMENDED_EXT } = require('@matthewbonig/state-machine');
+
+const project = new awscdk.AwsCdkTypeScriptApp({
+  // ...,
+  deps: [
+    // ...,
+    '@matthewbonig/state-machine',
+  ]
+});
+
+new StepFunctionsAutoDiscover(project, { extension: AWS_RECOMMENDED_EXT });
+```
+
 ### Examples
 
 ```ts
@@ -156,8 +179,6 @@ new StateMachine(stack, 'Test', {
   });
 ```
 
-
-
 For Python, be sure to use a context manager when opening your JSON file.  
 - You do not need to `str()` the dictionary object you supply as your `definition` prop.  
 - Elements of your override path **do** need to be strings.
@@ -180,6 +201,7 @@ state_machine = StateMachine(
     },
   })
 ```
+
 In this example, the ASL has a state called 'Read database credentials secret' and the SecretId parameter is overridden with a 
 CDK generated value.
 Future changes can be done by editing, debugging, and testing the state machine directly in the Workflow Studio.
