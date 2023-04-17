@@ -46,7 +46,6 @@
     "eslint-plugin-import": "^2.25.4",
     "jest": "^27",
     "jest-junit": "^13",
-    "js-yaml": "^4.1.0",
     "jsii": "^1.55.1",
     "jsii-diff": "^1.55.1",
     "jsii-docgen": "^6.3.1",
