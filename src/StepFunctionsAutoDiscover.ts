@@ -124,7 +124,7 @@ export class StepFunctionsStateMachine extends Component {
 
     let isYaml = /(yaml|yml)/.test(extension);
     if (isYaml) {
-      src.line('import * as yaml \'js-yaml\';');
+      src.line('import * as yaml from \'js-yaml\';');
     }
 
     src.open(`export interface ${constructName}Overrides {`);

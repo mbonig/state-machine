@@ -693,7 +693,7 @@ import { StateMachine, StateMachineProps } from '@matthewbonig/state-machine';
 import { Construct } from 'constructs';
 import fs from 'fs';
 import path from 'path';
-import * as yaml 'js-yaml';
+import * as yaml from 'js-yaml';
 export interface TestStateMachineOverrides {
   readonly 'Check Stock Price': Partial<{
     'Type': string;
@@ -774,7 +774,7 @@ import { StateMachine, StateMachineProps } from '@matthewbonig/state-machine';
 import { Construct } from 'constructs';
 import fs from 'fs';
 import path from 'path';
-import * as yaml 'js-yaml';
+import * as yaml from 'js-yaml';
 export interface TestStateMachineOverrides {
   readonly 'Check Stock Price': Partial<{
     'Type': string;
