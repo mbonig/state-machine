@@ -117,10 +117,10 @@ export class StepFunctionsStateMachine extends Component {
     if (src.marker) {
       src.line(`// ${src.marker}`);
     }
-    src.line('import { StateMachine, StateMachineProps } from \'@matthewbonig/state-machine\';');
-    src.line('import { Construct } from \'constructs\';');
     src.line('import fs from \'fs\';');
     src.line('import path from \'path\';');
+    src.line('import { StateMachine, StateMachineProps } from \'@matthewbonig/state-machine\';');
+    src.line('import { Construct } from \'constructs\';');
 
     let isYaml = /(yaml|yml)/.test(extension);
     if (isYaml) {

@@ -19,7 +19,7 @@ export function buildStateType(stateDef: any, indent = 2) {
       stateType += `${indentTabs}'${safeProp}': string;\n`;
     } else if (Array.isArray(propValue)) {
       const arrayPropTypes = propValue.map(pv => buildStateType(pv, indent + 1));
-      stateType += `${indentTabs}'${safeProp}': Partial<[${arrayPropTypes.join(',')}]>;\n`;
+      stateType += `${indentTabs}'${safeProp}': Partial<[${arrayPropTypes.join(', ')}]>;\n`;
     } else {
       stateType += `${indentTabs}'${safeProp}': ${buildStateType(propValue, indent + 1)};\n`;
     }
