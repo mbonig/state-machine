@@ -2,6 +2,7 @@ import { awscdk } from 'projen';
 import { NpmAccess } from 'projen/lib/javascript';
 
 const lodash = 'lodash.merge';
+const projenDep = 'projen@^0.71.34';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Matthew Bonig',
   authorAddress: 'matthew.bonig@gmail.com',
@@ -11,9 +12,20 @@ const project = new awscdk.AwsCdkConstructLibrary({
   constructsVersion: '10.1.203',
   name: '@matthewbonig/state-machine',
   repositoryUrl: 'https://github.com/mbonig/state-machine.git',
-  deps: [lodash, 'case', 'projen', 'js-yaml'],
-  peerDeps: ['projen', 'constructs'],
-  devDeps: ['@types/js-yaml'],
+  deps: [
+    projenDep,
+    lodash,
+    'case',
+    'js-yaml',
+  ],
+  peerDeps: [
+    projenDep,
+    'constructs',
+  ],
+  devDeps: [
+    '@types/js-yaml',
+    projenDep,
+  ],
   bundledDeps: [lodash, 'case', 'js-yaml'],
   npmAccess: NpmAccess.PUBLIC,
   gitignore: ['.idea/'],
