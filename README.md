@@ -18,6 +18,15 @@ Create a new instance of this construct, handing it a fully parsed version of th
 Then add overridden values. 
 The fields in the `overrides` field should match the `States` field of the ASL.
 
+## Version Usage
+
+The AWS CDK StateMachine construct introduced a change in version [**2.85.0**](https://github.com/aws/aws-cdk/pull/25932) that deprecated an earlier usage of 'definition'
+by this construct. This construct has been updated to use the new 'definitionBody' field. 
+
+If you are using a version of the CDK before version **2.85.0**, you should use version **0.0.28** of this construct.
+
+If you are using a version fo the CDK great or equal to **2.85.0**, you should use version **0.0.29+** of this construct. 
+
 ### Projen component
 
 There is a projen component included in this library which will help you in using the construct. It works similar

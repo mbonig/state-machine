@@ -22,6 +22,9 @@ Object {
       "ap-south-1": Object {
         "states": "states.ap-south-1.amazonaws.com",
       },
+      "ap-south-2": Object {
+        "states": "states.ap-south-2.amazonaws.com",
+      },
       "ap-southeast-1": Object {
         "states": "states.ap-southeast-1.amazonaws.com",
       },
@@ -42,6 +45,9 @@ Object {
       },
       "eu-central-1": Object {
         "states": "states.eu-central-1.amazonaws.com",
+      },
+      "eu-central-2": Object {
+        "states": "states.eu-central-2.amazonaws.com",
       },
       "eu-north-1": Object {
         "states": "states.eu-north-1.amazonaws.com",
@@ -108,6 +114,7 @@ Object {
   },
   "Resources": Object {
     "Test7BFAF513": Object {
+      "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "TestRole17AB2208",
       ],
@@ -123,6 +130,7 @@ Object {
         "StateMachineType": "STANDARD",
       },
       "Type": "AWS::StepFunctions::StateMachine",
+      "UpdateReplacePolicy": "Delete",
     },
     "TestRole17AB2208": Object {
       "Properties": Object {
