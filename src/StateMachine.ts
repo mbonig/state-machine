@@ -1,7 +1,7 @@
 import { Duration } from 'aws-cdk-lib';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as aws_stepfunctions from 'aws-cdk-lib/aws-stepfunctions';
-import { CfnStateMachine, LogOptions, Pass, StateMachineType } from 'aws-cdk-lib/aws-stepfunctions';
+import { DefinitionBody, LogOptions, StateMachineType } from 'aws-cdk-lib/aws-stepfunctions';
 import { Construct } from 'constructs';
 import * as yaml from 'js-yaml';
 
@@ -76,20 +76,21 @@ export interface StateMachineProps {
 export class StateMachine extends aws_stepfunctions.StateMachine {
 
   constructor(scope: Construct, id: string, props: StateMachineProps) {
-    super(scope, id, {
-      ...props,
-      definition: new Pass(scope, 'THISWILLBEDELETEDRIGHTAWAY'),
-    });
-    scope.node.tryRemoveChild('THISWILLBEDELETEDRIGHTAWAY');
     const mergedDefinition = merge(props.definition, { States: props.overrides });
     let definitionString: string;
     if (props.aslYaml) {
       definitionString = yaml.dump(mergedDefinition);
     } else {
       definitionString = JSON.stringify(mergedDefinition);
-
     }
-    (this.node.defaultChild as CfnStateMachine).definitionString = definitionString;
+    const propsMinusDefinition = {
+      ...props,
+      definition: undefined,
+    };
+    super(scope, id, {
+      ...propsMinusDefinition,
+      definitionBody: DefinitionBody.fromString(definitionString),
+    });
   }
 }
 
