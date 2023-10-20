@@ -83,10 +83,8 @@ export class StateMachine extends aws_stepfunctions.StateMachine {
     } else {
       definitionString = JSON.stringify(mergedDefinition);
     }
-    const propsMinusDefinition = {
-      ...props,
-      definition: undefined,
-    };
+    const propsMinusDefinition = { ...props, definition: undefined };
+    delete propsMinusDefinition.definition;
     super(scope, id, {
       ...propsMinusDefinition,
       definitionBody: DefinitionBody.fromString(definitionString),
