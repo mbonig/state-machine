@@ -17,8 +17,6 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
-    "package:dotnet": "npx projen package:dotnet",
-    "package:java": "npx projen package:java",
     "package:js": "npx projen package:js",
     "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
@@ -136,20 +134,9 @@
   "jsii": {
     "outdir": "dist",
     "targets": {
-      "java": {
-        "package": "com.matthewbonig.StateMachine",
-        "maven": {
-          "groupId": "com.matthewbonig",
-          "artifactId": "state-machine"
-        }
-      },
       "python": {
         "distName": "mbonig.state-machine",
         "module": "mbonig.state-machine"
-      },
-      "dotnet": {
-        "namespace": "MBonig.StateMachine",
-        "packageId": "MBonig.StateMachine"
       }
     },
     "tsc": {

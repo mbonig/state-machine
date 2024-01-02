@@ -24,6 +24,9 @@ const project = new CdkConstruct({
   bundledDeps: [lodash, 'case', 'js-yaml'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],
   disablePublishToGo: true,
+  disablePublishToMaven: true,
+  disablePublishToNuGet: true,
+
 });
 
 project.synth();
