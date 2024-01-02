@@ -7,11 +7,13 @@ const project = new CdkConstruct({
   cdkVersion: '2.85.0',
   name: 'state-machine',
   deps: [
+    projenDep,
     lodash,
     'case',
     'js-yaml',
   ],
   peerDeps: [
+    projenDep,
     'constructs',
   ],
   devDeps: [

@@ -128,6 +128,11 @@
       "type": "peer"
     },
     {
+      "name": "projen",
+      "version": "^0.71.34",
+      "type": "peer"
+    },
+    {
       "name": "case",
       "type": "runtime"
     },
@@ -137,6 +142,11 @@
     },
     {
       "name": "lodash.merge",
+      "type": "runtime"
+    },
+    {
+      "name": "projen",
+      "version": "^0.71.34",
       "type": "runtime"
     }
   ],

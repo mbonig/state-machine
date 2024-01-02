@@ -571,6 +571,194 @@ Type of the state machine.
 ---
 
 
+### StepFunctionsAutoDiscover <a name="StepFunctionsAutoDiscover" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover"></a>
+
+A projen component for discovering AWS Step Function state machine workflow ASL files and generating a strongly typed interface and construct to use it.
+
+Simply add a new instance and hand it your AwsCdkTypeScriptApp projen class:
+```
+const project = new AwsCdkTypeScriptApp({ ... });
+new StepFunctionsAutoDiscover(project);
+```
+
+And any *.workflow.json file will cause the generation of a new strongly-typed StateMachine-derived class you can use.
+Note that these constructs are NOT jsii-compatible. If you need that,
+please open an [issue](https://github.com/mbonig/state-machine/issues/new)
+
+#### Initializers <a name="Initializers" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer"></a>
+
+```typescript
+import { StepFunctionsAutoDiscover } from '@matthewbonig/state-machine'
+
+new StepFunctionsAutoDiscover(project: AwsCdkTypeScriptApp, _options?: StepFunctionsAutoDiscoverOptions)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project">project</a></code> | <code>projen.awscdk.AwsCdkTypeScriptApp</code> | *No description.* |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter._options">_options</a></code> | <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a></code> | *No description.* |
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project"></a>
+
+- *Type:* projen.awscdk.AwsCdkTypeScriptApp
+
+---
+
+##### `_options`<sup>Optional</sup> <a name="_options" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter._options"></a>
+
+- *Type:* <a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a>
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
+
+---
+
+##### `toString` <a name="toString" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `postSynthesize` <a name="postSynthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.postSynthesize"></a>
+
+```typescript
+public postSynthesize(): void
+```
+
+Called after synthesis.
+
+Order is *not* guaranteed.
+
+##### `preSynthesize` <a name="preSynthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.preSynthesize"></a>
+
+```typescript
+public preSynthesize(): void
+```
+
+Called before synthesis.
+
+##### `synthesize` <a name="synthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.synthesize"></a>
+
+```typescript
+public synthesize(): void
+```
+
+Synthesizes files to the project output directory.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.isComponent">isComponent</a></code> | Test whether the given construct is a component. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.isConstruct"></a>
+
+```typescript
+import { StepFunctionsAutoDiscover } from '@matthewbonig/state-machine'
+
+StepFunctionsAutoDiscover.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isComponent` <a name="isComponent" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.isComponent"></a>
+
+```typescript
+import { StepFunctionsAutoDiscover } from '@matthewbonig/state-machine'
+
+StepFunctionsAutoDiscover.isComponent(x: any)
+```
+
+Test whether the given construct is a component.
+
+###### `x`<sup>Required</sup> <a name="x" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.isComponent.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
+| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.entrypoints">entrypoints</a></code> | <code>string[]</code> | Auto-discovered entry points with paths relative to the project directory. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `project`<sup>Required</sup> <a name="project" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.project"></a>
+
+```typescript
+public readonly project: Project;
+```
+
+- *Type:* projen.Project
+
+---
+
+##### `entrypoints`<sup>Required</sup> <a name="entrypoints" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.entrypoints"></a>
+
+```typescript
+public readonly entrypoints: string[];
+```
+
+- *Type:* string[]
+
+Auto-discovered entry points with paths relative to the project directory.
+
+---
+
+
 ## Structs <a name="Structs" id="Structs"></a>
 
 ### StateMachineProps <a name="StateMachineProps" id="@matthewbonig/state-machine.StateMachineProps"></a>
@@ -749,117 +937,6 @@ public readonly extension: string;
 - *Default:* '.workflow.json' (JSON_STEPFUNCTION_EXT)
 
 An optional extension to use for discovering state machine files.
-
----
-
-## Classes <a name="Classes" id="Classes"></a>
-
-### StepFunctionsAutoDiscover <a name="StepFunctionsAutoDiscover" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover"></a>
-
-A projen component for discovering AWS Step Function state machine workflow ASL files and generating a strongly typed interface and construct to use it.
-
-Simply add a new instance and hand it your AwsCdkTypeScriptApp projen class:
-```
-const project = new AwsCdkTypeScriptApp({ ... });
-new StepFunctionsAutoDiscover(project);
-```
-
-And any *.workflow.json file will cause the generation of a new strongly-typed StateMachine-derived class you can use.
-Note that these constructs are NOT jsii-compatible. If you need that,
-please open an [issue](https://github.com/mbonig/state-machine/issues/new)
-
-#### Initializers <a name="Initializers" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer"></a>
-
-```typescript
-import { StepFunctionsAutoDiscover } from '@matthewbonig/state-machine'
-
-new StepFunctionsAutoDiscover(project: AwsCdkTypeScriptApp, _options?: StepFunctionsAutoDiscoverOptions)
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project">project</a></code> | <code>projen.awscdk.AwsCdkTypeScriptApp</code> | *No description.* |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter._options">_options</a></code> | <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a></code> | *No description.* |
-
----
-
-##### `project`<sup>Required</sup> <a name="project" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter.project"></a>
-
-- *Type:* projen.awscdk.AwsCdkTypeScriptApp
-
----
-
-##### `_options`<sup>Optional</sup> <a name="_options" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.Initializer.parameter._options"></a>
-
-- *Type:* <a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscoverOptions">StepFunctionsAutoDiscoverOptions</a>
-
----
-
-#### Methods <a name="Methods" id="Methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.postSynthesize">postSynthesize</a></code> | Called after synthesis. |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.preSynthesize">preSynthesize</a></code> | Called before synthesis. |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.synthesize">synthesize</a></code> | Synthesizes files to the project output directory. |
-
----
-
-##### `postSynthesize` <a name="postSynthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.postSynthesize"></a>
-
-```typescript
-public postSynthesize(): void
-```
-
-Called after synthesis.
-
-Order is *not* guaranteed.
-
-##### `preSynthesize` <a name="preSynthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.preSynthesize"></a>
-
-```typescript
-public preSynthesize(): void
-```
-
-Called before synthesis.
-
-##### `synthesize` <a name="synthesize" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.synthesize"></a>
-
-```typescript
-public synthesize(): void
-```
-
-Synthesizes files to the project output directory.
-
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.project">project</a></code> | <code>projen.Project</code> | *No description.* |
-| <code><a href="#@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.entrypoints">entrypoints</a></code> | <code>string[]</code> | Auto-discovered entry points with paths relative to the project directory. |
-
----
-
-##### `project`<sup>Required</sup> <a name="project" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.project"></a>
-
-```typescript
-public readonly project: Project;
-```
-
-- *Type:* projen.Project
-
----
-
-##### `entrypoints`<sup>Required</sup> <a name="entrypoints" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover.property.entrypoints"></a>
-
-```typescript
-public readonly entrypoints: string[];
-```
-
-- *Type:* string[]
-
-Auto-discovered entry points with paths relative to the project directory.
 
 ---
 

@@ -62,12 +62,14 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.85.0",
-    "constructs": "^10.1.203"
+    "constructs": "^10.1.203",
+    "projen": "^0.71.34"
   },
   "dependencies": {
     "case": "^1.6.3",
     "js-yaml": "^4.1.0",
-    "lodash.merge": "^4.6.2"
+    "lodash.merge": "^4.6.2",
+    "projen": "^0.71.34"
   },
   "bundledDependencies": [
     "case",
