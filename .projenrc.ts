@@ -1,17 +1,11 @@
-import { awscdk } from 'projen';
-import { NpmAccess } from 'projen/lib/javascript';
+import { CdkConstruct } from '@matthewbonig/cdk-construct-library';
 
 const lodash = 'lodash.merge';
 const projenDep = 'projen@^0.71.34';
-const project = new awscdk.AwsCdkConstructLibrary({
-  author: 'Matthew Bonig',
-  authorAddress: 'matthew.bonig@gmail.com',
+const project = new CdkConstruct({
   description: 'A Step Function state machine construct focused on working well with the Workflow Studio',
   cdkVersion: '2.85.0',
-  defaultReleaseBranch: 'main',
-  constructsVersion: '10.1.203',
-  name: '@matthewbonig/state-machine',
-  repositoryUrl: 'https://github.com/mbonig/state-machine.git',
+  name: 'state-machine',
   deps: [
     projenDep,
     lodash,
@@ -23,23 +17,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'constructs',
   ],
   devDeps: [
-    '@types/js-yaml',
     projenDep,
+    '@types/js-yaml',
+    '@matthewbonig/cdk-construct-library',
   ],
   bundledDeps: [lodash, 'case', 'js-yaml'],
-  npmAccess: NpmAccess.PUBLIC,
-  gitignore: ['.idea/'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],
-  // temporarily disabling go compilation
-  /*publishToGo: {
-    moduleName: 'github.com/mbonig/state-machine',
-  },*/
-  projenrcTs: true,
-  depsUpgrade: false,
-  publishToPypi: {
-    distName: 'mbonig.state-machine',
-    module: 'mbonig.state_machine',
-  },
+  disablePublishToGo: true,
 });
 
 project.synth();
