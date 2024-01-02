@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@matthewbonig/cdk-construct-library",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "version": "^27",
       "type": "build"
@@ -16,26 +20,12 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^5",
+      "version": "^6",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^5",
-      "type": "build"
-    },
-    {
-      "name": "aws-cdk-lib",
-      "version": "2.85.0",
-      "type": "build"
-    },
-    {
-      "name": "constructs",
-      "version": "10.1.203",
-      "type": "build"
-    },
-    {
-      "name": "eslint-import-resolver-node",
+      "version": "^6",
       "type": "build"
     },
     {
@@ -71,6 +61,11 @@
     },
     {
       "name": "jsii-pacmak",
+      "type": "build"
+    },
+    {
+      "name": "jsii-rosetta",
+      "version": "1.x",
       "type": "build"
     },
     {
@@ -133,11 +128,6 @@
       "type": "peer"
     },
     {
-      "name": "projen",
-      "version": "^0.71.34",
-      "type": "peer"
-    },
-    {
       "name": "case",
       "type": "runtime"
     },
@@ -147,11 +137,6 @@
     },
     {
       "name": "lodash.merge",
-      "type": "runtime"
-    },
-    {
-      "name": "projen",
-      "version": "^0.71.34",
       "type": "runtime"
     }
   ],

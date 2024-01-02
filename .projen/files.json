@@ -8,7 +8,6 @@
     ".github/workflows/release.yml",
     ".gitignore",
     ".mergify.yml",
-    ".npmrc",
     ".projen/deps.json",
     ".projen/files.json",
     ".projen/tasks.json",
