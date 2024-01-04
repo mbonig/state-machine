@@ -34,7 +34,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@matthewbonig/cdk-construct-library": "^0.0.9",
+    "@matthewbonig/cdk-construct-library": "^0.0.10",
     "@types/jest": "^27",
     "@types/js-yaml": "^4.0.5",
     "@types/node": "^16",
@@ -136,7 +136,7 @@
     "targets": {
       "python": {
         "distName": "mbonig.state-machine",
-        "module": "mbonig.state-machine"
+        "module": "mbonig_state_machine"
       }
     },
     "tsc": {

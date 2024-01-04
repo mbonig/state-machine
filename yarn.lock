@@ -650,10 +650,10 @@
   dependencies:
     ajv "^8.12.0"
 
-"@matthewbonig/cdk-construct-library@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@matthewbonig/cdk-construct-library/-/cdk-construct-library-0.0.9.tgz#2fbc165c646b969c126b86de83e2302df332953b"
-  integrity sha512-O2n8vTIo46l76dz7BE+nQpofZ5znLDbrZOfwB0C/+XpXOhKP0ryUX6wxrw0VYoImKUVzDMNCna29wUgh5awKaw==
+"@matthewbonig/cdk-construct-library@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@matthewbonig/cdk-construct-library/-/cdk-construct-library-0.0.10.tgz#6ab4a8fdefcb4a49eb012c55cb5eb3448c50edd5"
+  integrity sha512-UwWq4J1NXsj6cWyK9FIVbBItgkM28hjx1e7LojHKQRnJ5kJy3/Bk9CXmckOotU9Fr55svM2niRyLuMbGtTOwOg==
   dependencies:
     case "^1.6.3"
     projen "^0.77.6"
