@@ -20,7 +20,7 @@ The fields in the `overrides` field should match the `States` field of the ASL.
 
 ## Version Usage
 
-The AWS CDK StateMachine construct introduced a change in version [**2.85.0**](https://github.com/aws/aws-cdk/pull/25932) that deprecated an earlier usage of 'definition'
+The AWS CDK `StateMachine` construct introduced a change in version [**2.85.0**](https://github.com/aws/aws-cdk/pull/25932) that deprecated an earlier usage of 'definition'
 by this construct. This construct has been updated to use the new 'definitionBody' field. 
 
 If you are using a version of the CDK before version **2.85.0**, you should use version **0.0.28** of this construct.
@@ -50,9 +50,9 @@ new StepFunctionsAutoDiscover(project);
 
 Now projen will look for any files with a suffix `.workflow.json` and generate new files beside the .json:
 * A typed `overrides` interface which is based on your workflow.
-* A construct derived from StateMachine that uses this override.
+* A construct derived from `StateMachine` that uses this override.
 
-Instead of using the StateMachine construct directly you can now use the generated one:
+Instead of using the `StateMachine` construct directly you can now use the generated one:
 
 ```text
 .
