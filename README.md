@@ -30,7 +30,7 @@ If you are using a version fo the CDK great or equal to **2.85.0**, you should u
 ### Projen component
 
 There is a projen component included in this library which will help you in using the construct. It works similar
-to the [auto-discovery feature](https://projen.io/awscdk.html#aws-lambda-functions). To use it, first add the component
+to the [auto-discovery feature](https://projen.io/docs/integrations/aws/#aws-lambda-functions). To use it, first add the component
 to your projen project:
 
 ```js
