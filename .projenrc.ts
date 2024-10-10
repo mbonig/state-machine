@@ -1,11 +1,12 @@
 import { CdkConstruct } from '@matthewbonig/cdk-construct-library';
 
 const lodash = 'lodash.merge';
-const projenDep = 'projen@^0.71.34';
+const projenDep = 'projen@^0.84.6';
 const project = new CdkConstruct({
   description: 'A Step Function state machine construct focused on working well with the Workflow Studio',
   cdkVersion: '2.85.0',
   name: 'state-machine',
+  constructsVersion: '10.3.0',
   deps: [
     projenDep,
     lodash,
@@ -14,7 +15,7 @@ const project = new CdkConstruct({
   ],
   peerDeps: [
     projenDep,
-    'constructs',
+    'constructs@10.3.0',
   ],
   devDeps: [
     projenDep,

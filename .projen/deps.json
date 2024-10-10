@@ -124,12 +124,12 @@
     },
     {
       "name": "constructs",
-      "version": "^10.1.203",
+      "version": "^10.3.0",
       "type": "peer"
     },
     {
       "name": "projen",
-      "version": "^0.71.34",
+      "version": "^0.84.6",
       "type": "peer"
     },
     {
@@ -146,7 +146,7 @@
     },
     {
       "name": "projen",
-      "version": "^0.71.34",
+      "version": "^0.84.6",
       "type": "runtime"
     }
   ],
