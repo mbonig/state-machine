@@ -1,7 +1,7 @@
 import { CdkConstruct } from '@matthewbonig/cdk-construct-library';
 
 const lodash = 'lodash.merge';
-const projenDep = 'projen@^0.84.6';
+const projenDep = 'projen@^0.88.2';
 const project = new CdkConstruct({
   description: 'A Step Function state machine construct focused on working well with the Workflow Studio',
   cdkVersion: '2.85.0',
@@ -29,5 +29,6 @@ const project = new CdkConstruct({
   disablePublishToNuGet: true,
 
 });
+project.github!.actions.set('actions/upload-artifact', 'actions/upload-artifact@v4.3.6');
 
 project.synth();

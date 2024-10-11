@@ -4600,10 +4600,10 @@ projen@^0.77.6:
     yaml "^2.2.2"
     yargs "^17.7.2"
 
-projen@^0.84.6:
-  version "0.84.13"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.84.13.tgz#f9b4b16d0efdcbec62b4429e06fa5344ce7bf0a2"
-  integrity sha512-N9XocN5wcYg5ZeyQwr76sxRPncdXdkIrlOJhISFtI9jMZxEU6D+ms/oKLCc85+KwJH9qbhrR/+5h6Nys54n0kA==
+projen@^0.88.2:
+  version "0.88.2"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.88.2.tgz#63c2888cb2186509726826253206fdee087922c0"
+  integrity sha512-M5BcLcK7D7qivwXD+KKCHww2ojHm6AIcL9gr7ORO1EZqgoMWMv3zftTIFpXmheiBEseGX/Ad5ps7fMHYBSMBkQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
