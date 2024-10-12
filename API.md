@@ -109,7 +109,7 @@ Add the given statement to the role's policy.
 ##### `grant` <a name="grant" id="@matthewbonig/state-machine.StateMachine.grant"></a>
 
 ```typescript
-public grant(identity: IGrantable, actions: string): Grant
+public grant(identity: IGrantable, actions: ...string[]): Grant
 ```
 
 Grant the given identity custom permissions.
@@ -122,14 +122,14 @@ Grant the given identity custom permissions.
 
 ###### `actions`<sup>Required</sup> <a name="actions" id="@matthewbonig/state-machine.StateMachine.grant.parameter.actions"></a>
 
-- *Type:* string
+- *Type:* ...string[]
 
 ---
 
 ##### `grantExecution` <a name="grantExecution" id="@matthewbonig/state-machine.StateMachine.grantExecution"></a>
 
 ```typescript
-public grantExecution(identity: IGrantable, actions: string): Grant
+public grantExecution(identity: IGrantable, actions: ...string[]): Grant
 ```
 
 Grant the given identity permissions on all executions of the state machine.
@@ -142,7 +142,7 @@ Grant the given identity permissions on all executions of the state machine.
 
 ###### `actions`<sup>Required</sup> <a name="actions" id="@matthewbonig/state-machine.StateMachine.grantExecution.parameter.actions"></a>
 
-- *Type:* string
+- *Type:* ...string[]
 
 ---
 
