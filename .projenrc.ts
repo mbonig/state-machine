@@ -20,7 +20,7 @@ const project = new CdkConstruct({
   devDeps: [
     projenDep,
     '@types/js-yaml',
-    '@matthewbonig/cdk-construct-library',
+    '@matthewbonig/cdk-construct-library@0.0.14',
   ],
   bundledDeps: [lodash, 'case', 'js-yaml'],
   keywords: ['awscdk', 'cdk', 'AWS Step Functions'],
