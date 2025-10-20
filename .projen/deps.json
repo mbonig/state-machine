@@ -6,6 +6,11 @@
       "type": "build"
     },
     {
+      "name": "@stylistic/eslint-plugin",
+      "version": "^2",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "version": "28",
       "type": "build"
@@ -20,17 +25,31 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^7",
+      "version": "^8",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^7",
+      "version": "^8",
+      "type": "build"
+    },
+    {
+      "name": "aws-cdk-lib",
+      "version": "2.200.0",
+      "type": "build"
+    },
+    {
+      "name": "aws-cdk",
+      "version": "2.1029.2",
       "type": "build"
     },
     {
       "name": "commit-and-tag-version",
       "version": "^12",
+      "type": "build"
+    },
+    {
+      "name": "esbuild",
       "type": "build"
     },
     {
@@ -43,12 +62,12 @@
     },
     {
       "name": "eslint",
-      "version": "^8",
+      "version": "^9",
       "type": "build"
     },
     {
       "name": "jest-junit",
-      "version": "^15",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -81,7 +100,7 @@
     },
     {
       "name": "projen",
-      "version": "~0.88.2",
+      "version": "^0.95.4",
       "type": "build"
     },
     {
@@ -111,17 +130,16 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.85.0",
+      "version": "^2.200.0",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.3.0",
+      "version": "^10.1.203",
       "type": "peer"
     },
     {
       "name": "projen",
-      "version": "^0.88.2",
       "type": "peer"
     },
     {
@@ -134,11 +152,6 @@
     },
     {
       "name": "lodash.merge",
-      "type": "runtime"
-    },
-    {
-      "name": "projen",
-      "version": "^0.88.2",
       "type": "runtime"
     }
   ],
