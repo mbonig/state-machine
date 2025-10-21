@@ -32,6 +32,8 @@ const project = new CdkConstruct({
     'projen',
     '@types/js-yaml',
     `@matthewbonig/cdk-construct-library@${cdkConstructProjectVersion}`,
+    'jsii@^5.9.0',
+    'jsii-rosetta@^5.9.0',
   ],
   constructsVersion: minConstructsVersion,
   bundledDeps: [lodash, 'case', 'js-yaml'],
@@ -47,5 +49,8 @@ project.package.addField('resolutions', {
   projen: `${projenVersion}`,
   jsii: '^5.9.0',
 });
+
+// Override jsii versions to fix lockfile inconsistency
+project.addDevDeps('jsii@^5.9.0', 'jsii-rosetta@^5.9.0');
 
 project.synth();
