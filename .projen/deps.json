@@ -2,7 +2,7 @@
   "dependencies": [
     {
       "name": "@matthewbonig/cdk-construct-library",
-      "version": "0.0.14",
+      "version": "0.0.17",
       "type": "build"
     },
     {
@@ -100,7 +100,7 @@
     },
     {
       "name": "projen",
-      "version": "^0.95.4",
+      "version": "^0.98.2",
       "type": "build"
     },
     {
@@ -135,7 +135,7 @@
     },
     {
       "name": "constructs",
-      "version": "^10.1.203",
+      "version": "^10.3.0",
       "type": "peer"
     },
     {
