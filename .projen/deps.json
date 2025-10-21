@@ -2,7 +2,12 @@
   "dependencies": [
     {
       "name": "@matthewbonig/cdk-construct-library",
-      "version": "0.0.14",
+      "version": "0.0.17",
+      "type": "build"
+    },
+    {
+      "name": "@stylistic/eslint-plugin",
+      "version": "^2",
       "type": "build"
     },
     {
@@ -20,17 +25,31 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^7",
+      "version": "^8",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^7",
+      "version": "^8",
+      "type": "build"
+    },
+    {
+      "name": "aws-cdk-lib",
+      "version": "2.200.0",
+      "type": "build"
+    },
+    {
+      "name": "aws-cdk",
+      "version": "2.1029.2",
       "type": "build"
     },
     {
       "name": "commit-and-tag-version",
       "version": "^12",
+      "type": "build"
+    },
+    {
+      "name": "esbuild",
       "type": "build"
     },
     {
@@ -43,12 +62,12 @@
     },
     {
       "name": "eslint",
-      "version": "^8",
+      "version": "^9",
       "type": "build"
     },
     {
       "name": "jest-junit",
-      "version": "^15",
+      "version": "^16",
       "type": "build"
     },
     {
@@ -71,17 +90,17 @@
     },
     {
       "name": "jsii-rosetta",
-      "version": "~5.5.0",
+      "version": "^5.9.0",
       "type": "build"
     },
     {
       "name": "jsii",
-      "version": "~5.5.0",
+      "version": "^5.9.0",
       "type": "build"
     },
     {
       "name": "projen",
-      "version": "~0.88.2",
+      "version": "^0.98.2",
       "type": "build"
     },
     {
@@ -111,7 +130,7 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.85.0",
+      "version": "^2.200.0",
       "type": "peer"
     },
     {
@@ -121,7 +140,6 @@
     },
     {
       "name": "projen",
-      "version": "^0.88.2",
       "type": "peer"
     },
     {
@@ -134,11 +152,6 @@
     },
     {
       "name": "lodash.merge",
-      "type": "runtime"
-    },
-    {
-      "name": "projen",
-      "version": "^0.88.2",
       "type": "runtime"
     }
   ],

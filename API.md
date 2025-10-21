@@ -48,6 +48,7 @@ new StateMachine(scope: Construct, id: string, props: StateMachineProps)
 | <code><a href="#@matthewbonig/state-machine.StateMachine.grant">grant</a></code> | Grant the given identity custom permissions. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.grantExecution">grantExecution</a></code> | Grant the given identity permissions on all executions of the state machine. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.grantRead">grantRead</a></code> | Grant the given identity permissions to read results from state machine. |
+| <code><a href="#@matthewbonig/state-machine.StateMachine.grantRedriveExecution">grantRedriveExecution</a></code> | Grant the given identity permission to redrive the execution of the state machine. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.grantStartExecution">grantStartExecution</a></code> | Grant the given identity permissions to start an execution of this state machine. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.grantStartSyncExecution">grantStartSyncExecution</a></code> | Grant the given identity permissions to start a synchronous execution of this state machine. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.grantTaskResponse">grantTaskResponse</a></code> | Grant the given identity task response permissions on a state machine. |
@@ -155,6 +156,20 @@ public grantRead(identity: IGrantable): Grant
 Grant the given identity permissions to read results from state machine.
 
 ###### `identity`<sup>Required</sup> <a name="identity" id="@matthewbonig/state-machine.StateMachine.grantRead.parameter.identity"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.IGrantable
+
+---
+
+##### `grantRedriveExecution` <a name="grantRedriveExecution" id="@matthewbonig/state-machine.StateMachine.grantRedriveExecution"></a>
+
+```typescript
+public grantRedriveExecution(identity: IGrantable): Grant
+```
+
+Grant the given identity permission to redrive the execution of the state machine.
+
+###### `identity`<sup>Required</sup> <a name="identity" id="@matthewbonig/state-machine.StateMachine.grantRedriveExecution.parameter.identity"></a>
 
 - *Type:* aws-cdk-lib.aws_iam.IGrantable
 
@@ -463,6 +478,7 @@ Import a state machine via resource name.
 | <code><a href="#@matthewbonig/state-machine.StateMachine.property.role">role</a></code> | <code>aws-cdk-lib.aws_iam.IRole</code> | Execution role of this state machine. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.property.stateMachineArn">stateMachineArn</a></code> | <code>string</code> | The ARN of the state machine. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.property.stateMachineName">stateMachineName</a></code> | <code>string</code> | The name of the state machine. |
+| <code><a href="#@matthewbonig/state-machine.StateMachine.property.stateMachineRevisionId">stateMachineRevisionId</a></code> | <code>string</code> | Identifier for the state machine revision, which is an immutable, read-only snapshot of a state machine’s definition and configuration. |
 | <code><a href="#@matthewbonig/state-machine.StateMachine.property.stateMachineType">stateMachineType</a></code> | <code>aws-cdk-lib.aws_stepfunctions.StateMachineType</code> | Type of the state machine. |
 
 ---
@@ -558,6 +574,18 @@ The name of the state machine.
 
 ---
 
+##### `stateMachineRevisionId`<sup>Required</sup> <a name="stateMachineRevisionId" id="@matthewbonig/state-machine.StateMachine.property.stateMachineRevisionId"></a>
+
+```typescript
+public readonly stateMachineRevisionId: string;
+```
+
+- *Type:* string
+
+Identifier for the state machine revision, which is an immutable, read-only snapshot of a state machine’s definition and configuration.
+
+---
+
 ##### `stateMachineType`<sup>Required</sup> <a name="stateMachineType" id="@matthewbonig/state-machine.StateMachine.property.stateMachineType"></a>
 
 ```typescript
@@ -570,6 +598,25 @@ Type of the state machine.
 
 ---
 
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@matthewbonig/state-machine.StateMachine.property.PROPERTY_INJECTION_ID">PROPERTY_INJECTION_ID</a></code> | <code>string</code> | Uniquely identifies this class. |
+
+---
+
+##### `PROPERTY_INJECTION_ID`<sup>Required</sup> <a name="PROPERTY_INJECTION_ID" id="@matthewbonig/state-machine.StateMachine.property.PROPERTY_INJECTION_ID"></a>
+
+```typescript
+public readonly PROPERTY_INJECTION_ID: string;
+```
+
+- *Type:* string
+
+Uniquely identifies this class.
+
+---
 
 ### StepFunctionsAutoDiscover <a name="StepFunctionsAutoDiscover" id="@matthewbonig/state-machine.StepFunctionsAutoDiscover"></a>
 
