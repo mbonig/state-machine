@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "case": "^1.6.3",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.1",
     "lodash.merge": "^4.6.2"
   },
   "bundledDependencies": [
